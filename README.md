@@ -30,33 +30,40 @@ Two pipelines share one evidence store. The **build** pipeline runs once per pap
 
 ```mermaid
 flowchart TB
-    subgraph BUILD["BUILD — once per paper"]
+    subgraph BUILD["BUILD — Once Per Paper"]
         direction LR
-        PDF["PDF paper"] --> TXT["Full-text extraction<br/>pymupdf4llm"]
-        TXT --> STAGE["Staged LLM extraction<br/>discovery · per-source · statistical"]
-        STAGE --> RAW["ExtractionRecord<br/>raw · permissive · uninterpreted"]
-        RAW --> COMP["Deterministic compiler<br/>zero LLM calls"]
-        COMP --> CER["Canonical Evidence Representation<br/>Study → Experiment → Source → Observation<br/>+ statistical-analysis layer"]
-        CER --> LOAD["load_evidence_store.py"]
-        LOAD --> DB[("DuckDB<br/>evidence_store_v3")]
+        PDF_D["PDF Paper"] --> TXT_D["Full-Text Extraction<br/><code>pymupdf4llm</code>"]
+        TXT_D --> STAGE_D["Staged LLM Extraction<br/>discovery · per-source · statistical"]
+        STAGE_D --> RAW_D["ExtractionRecord<br/>raw · permissive · uninterpreted"]
+        RAW_D --> COMP_D["Deterministic Compiler<br/>zero LLM calls"]
+        COMP_D --> CER_D["Canonical Evidence Representation<br/>Study → Experiment → Source → Observation"]
+        CER_D --> LOAD_D["load_evidence_store.py"]
+        LOAD_D --> DB_D[("DuckDB<br/>evidence_store_v3")]
     end
 
-    subgraph QUERY["QUERY — per question"]
+    subgraph QUERY["QUERY — Per Question"]
         direction LR
-        Q["User question"] --> ENGINE["ResearchEngine<br/>agent loop"]
-        ENGINE --> LLM["LLM agent<br/>zero prior knowledge<br/>tool-calls only"]
-        LLM --> TOOLS["11 deterministic tools<br/>search · get_measurements<br/>schema · trace"]
-        TOOLS <--> DB
-        TOOLS --> VAL["Evidence validation<br/>strip any ID the tools did not return"]
-        VAL --> ANS["Grounded answer<br/>prose + Evidence block + clickable refs"]
-        ANS --> UI["Web UI<br/>chat left · inspection right"]
+        Q_D["User Question"] --> ENGINE_D["ResearchEngine<br/>agent loop"]
+        ENGINE_D --> LLM_D["LLM Agent<br/>zero prior knowledge"]
+        LLM_D --> TOOLS_D["11 Deterministic Tools<br/>search · get_measurements · schema · trace"]
+        TOOLS_D <--> DB_D
+        TOOLS_D --> VAL_D["Evidence Validation<br/>strips invalid IDs"]
+        VAL_D --> ANS_D["Grounded Answer<br/>prose + evidence + refs"]
+        ANS_D --> UI_D["Web UI<br/>chat / inspection"]
     end
 
-    style LLM fill:#fbb,stroke:#900
-    style COMP fill:#dfd,stroke:#090
-    style TOOLS fill:#dfd,stroke:#090
-    style VAL fill:#dfd,stroke:#090
-    style DB fill:#cfe8ff,stroke:#069
+    %% Styles
+    style BUILD fill:#0f172a,stroke:#334155,stroke-width:2px,color:#f8fafc
+    style QUERY fill:#0f172a,stroke:#334155,stroke-width:2px,color:#f8fafc
+
+    style LLM_D fill:#450a0a,stroke:#f87171,color:#fecaca
+    style STAGE_D fill:#450a0a,stroke:#f87171,color:#fecaca
+
+    style COMP_D fill:#052e16,stroke:#4ade80,color:#bbf7d0
+    style TOOLS_D fill:#052e16,stroke:#4ade80,color:#bbf7d0
+    style VAL_D fill:#052e16,stroke:#4ade80,color:#bbf7d0
+
+    style DB_D fill:#082f49,stroke:#38bdf8,color:#e0f2fe
 ```
 
 Color legend: **red** = the LLM (present in both pipelines, always constrained to tools), **green** = deterministic components (the trust boundary), **blue** = the evidence store.
