@@ -26,9 +26,40 @@ This system prevents that by architecture, not by prompting:
 
 ## Architecture
 
+Two pipelines share one evidence store. The **build** pipeline runs once per paper and turns PDFs into a normalized store using deterministic compilation; the **query** pipeline runs per question and constrains the LLM to retrieving — never generating — numbers.
+
+```mermaid
+flowchart TB
+    subgraph BUILD["BUILD — once per paper"]
+        direction LR
+        PDF["PDF paper"] --> TXT["Full-text extraction<br/>pymupdf4llm"]
+        TXT --> STAGE["Staged LLM extraction<br/>discovery · per-source · statistical"]
+        STAGE --> RAW["ExtractionRecord<br/>raw · permissive · uninterpreted"]
+        RAW --> COMP["Deterministic compiler<br/>zero LLM calls"]
+        COMP --> CER["Canonical Evidence Representation<br/>Study → Experiment → Source → Observation<br/>+ statistical-analysis layer"]
+        CER --> LOAD["load_evidence_store.py"]
+        LOAD --> DB[("DuckDB<br/>evidence_store_v3")]
+    end
+
+    subgraph QUERY["QUERY — per question"]
+        direction LR
+        Q["User question"] --> ENGINE["ResearchEngine<br/>agent loop"]
+        ENGINE --> LLM["LLM agent<br/>zero prior knowledge<br/>tool-calls only"]
+        LLM --> TOOLS["11 deterministic tools<br/>search · get_measurements<br/>schema · trace"]
+        TOOLS <--> DB
+        TOOLS --> VAL["Evidence validation<br/>strip any ID the tools did not return"]
+        VAL --> ANS["Grounded answer<br/>prose + Evidence block + clickable refs"]
+        ANS --> UI["Web UI<br/>chat left · inspection right"]
+    end
+
+    style LLM fill:#fbb,stroke:#900
+    style COMP fill:#dfd,stroke:#090
+    style TOOLS fill:#dfd,stroke:#090
+    style VAL fill:#dfd,stroke:#090
+    style DB fill:#cfe8ff,stroke:#069
 ```
-PDFs → Extraction → CER → Evidence Store → Scientific Tools → Grounded Assistant
-```
+
+Color legend: **red** = the LLM (present in both pipelines, always constrained to tools), **green** = deterministic components (the trust boundary), **blue** = the evidence store.
 
 | Stage | Description |
 |---|---|
