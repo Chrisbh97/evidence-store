@@ -1,0 +1,80 @@
+{
+  "s1": {
+    "Table 1": 2,
+    "Table 2": 3,
+    "Table 3": 4,
+    "Table 4": 4,
+    "Table 5": 7,
+    "Table 6": 7,
+    "Table 7": 8
+  },
+  "s10": {
+    "Table 1": 4,
+    "Table 2": 7,
+    "Table 3": 7,
+    "Table 4": 8,
+    "Table 5": 9,
+    "Table 6": 10,
+    "Table 7": 11,
+    "Table 8": 12
+  },
+  "s2": {
+    "Table 1": 3,
+    "Table 2": 4,
+    "Table 3": 5,
+    "Table 4": 6,
+    "Table 5": 6,
+    "Table 6": 7,
+    "Table 7": 7,
+    "Table 8": 8
+  },
+  "s3": {
+    "Table 1": 3,
+    "Table 2": 3,
+    "Table 3": 4,
+    "Table 4": 5,
+    "Table 5": 6,
+    "Table 6": 8
+  },
+  "s4": {
+    "Table 1": 5,
+    "Table 2": 6,
+    "Table 3": 6,
+    "Table 4": 9,
+    "Table 5": 11,
+    "Table 6": 11,
+    "Table 7": 13,
+    "Table 8": 15
+  },
+  "s5": {
+    "Table 1": 3,
+    "Table 2": 4,
+    "Table 3": 4
+  },
+  "s6": {
+    "Table 1": 2,
+    "Table 2": 3,
+    "Table 3": 4
+  },
+  "s7": {
+    "Table 1": 3,
+    "Table 2": 3,
+    "Table 3": 3,
+    "Table 4": 4,
+    "Table 5": 4
+  },
+  "s8": {
+    "Table 1": 3,
+    "Table 2": 3,
+    "Table 3": 3,
+    "Table 4": 4,
+    "Table 5": 4
+  },
+  "s9": {
+    "Table 1": 3,
+    "Table 2": 3,
+    "Table 3": 3,
+    "Table 4": 4,
+    "Table 5": 4
+  }
+}

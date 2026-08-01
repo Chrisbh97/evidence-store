@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evidence Discovery System</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+html, body { height: 100%; margin: 0; overflow: hidden; }
+.split { display: flex; height: 100vh; }
+.pane-chat { width: 40%; display: flex; flex-direction: column; border-right: 1px solid #dee2e6; }
+.pane-inspect { width: 60%; display: flex; flex-direction: column; background: #f8f9fa; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 1rem; }
+.chat-input { padding: 0.75rem; border-top: 1px solid #dee2e6; background: #fff; }
+.chat-input .input-group { max-width: 100%; }
+.inspect-content { flex: 1; overflow-y: auto; padding: 1.5rem; }
+.msg { margin-bottom: 1rem; padding: 0.75rem 1rem; border-radius: 0.5rem; max-width: 95%; }
+.msg-user { background: #dbeafe; margin-left: auto; }
+.msg-system { background: #fff; border: 1px solid #e5e7eb; }
+.msg-system .ref-chip { display: inline-block; background: #f0fdf4; border: 1px solid #86efac; border-radius: 0.375rem; padding: 0.125rem 0.5rem; margin: 0.125rem; cursor: pointer; font-size: 0.875rem; white-space: nowrap; }
+.msg-system .ref-chip:hover { background: #bbf7d0; }
+.msg-system details { color: #6b7280; }
+.msg-system details summary { cursor: pointer; user-select: none; }
+.msg-system details summary:hover { color: #374151; }
+.empty-state { color: #9ca3af; text-align: center; padding: 3rem 1rem; }
+.breadcrumb-nav { padding: 0.5rem 1.5rem; background: #fff; border-bottom: 1px solid #dee2e6; font-size: 0.875rem; }
+.inspect-loading { text-align: center; padding: 3rem; color: #6b7280; }
+.card-experiment { background: #fff; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 1.25rem; margin-bottom: 1rem; }
+.card-experiment h5 { margin-bottom: 0.25rem; }
+.card-experiment .meta { color: #6b7280; font-size: 0.875rem; margin-bottom: 0.75rem; }
+.card-experiment table { font-size: 0.875rem; }
+.card-source { background: #fff; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 1.25rem; overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="split">
+  <div class="pane-chat">
+    <div class="chat-messages" id="chatMessages">
+      <div class="empty-state">Ask a question to get started.<br>Example: "What experiments studied phosphorus on bread wheat?"</div>
+    </div>
+    <div class="chat-input">
+      <div class="input-group">
+        <input type="text" class="form-control" id="questionInput" placeholder="Ask a question..." autofocus>
+        <button class="btn btn-primary" id="askBtn" onclick="ask()">Ask</button>
+      </div>
+    </div>
+  </div>
+  <div class="pane-inspect">
+    <div class="breadcrumb-nav" id="breadcrumb">Inspection</div>
+    <div class="inspect-content" id="inspectContent">
+      <div class="empty-state">Click an experiment reference to inspect it here.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const chatEl = document.getElementById('chatMessages');
+const inspectEl = document.getElementById('inspectContent');
+const breadcrumbEl = document.getElementById('breadcrumb');
+const inputEl = document.getElementById('questionInput');
+const askBtn = document.getElementById('askBtn');
+let currentSessionId = null;
+
+inputEl.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
+
+function renderText(text) {
+  // Replace <ref> tags with clickable chips (after markdown is applied)
+  return text.replace(/<ref\s+type="(\w+)"\s+ids="([^"]+)"\s+label="([^"]*)"(?:\s+experiment="([^"]*)")?\s*\/>/g, (m, type, ids, label, experiment) => {
+    return `<span class="ref-chip" onclick="inspectRef('${type}', '${ids}', '${experiment || ''}')" title="${type}: ${ids}">${label}</span>`;
+  });
+}
+
+function addMessage(text, role, toolTrace) {
+  const empty = chatEl.querySelector('.empty-state');
+  if (empty) empty.remove();
+  const div = document.createElement('div');
+  div.className = `msg msg-${role}`;
+  // User messages are plain text; system messages render as markdown with ref chips
+  if (role === 'system') {
+    const md = marked.parse(text, { breaks: true });
+    div.innerHTML = renderText(md);
+    // Collapsible tool trace
+    if (toolTrace && toolTrace.length > 0) {
+      const details = document.createElement('details');
+      details.style.marginTop = '0.5rem';
+      details.style.fontSize = '0.8rem';
+      const summary = document.createElement('summary');
+      summary.textContent = `Evidence consulted (${toolTrace.length} tool calls)`;
+      details.appendChild(summary);
+      const list = document.createElement('ul');
+      list.style.paddingLeft = '1.25rem';
+      list.style.marginTop = '0.25rem';
+      list.style.marginBottom = '0';
+      for (const t of toolTrace) {
+        const li = document.createElement('li');
+        const argsStr = Object.entries(t.args || {}).map(([k, v]) => {
+          const val = Array.isArray(v) ? v.join(', ') : (typeof v === 'object' ? JSON.stringify(v) : String(v));
+          return `${k}=${val}`;
+        }).join(', ');
+        li.textContent = `${t.tool}(${argsStr}) → ${t.summary}`;
+        list.appendChild(li);
+      }
+      details.appendChild(list);
+      div.appendChild(details);
+    }
+  } else {
+    div.textContent = text;
+  }
+  chatEl.appendChild(div);
+  chatEl.scrollTop = chatEl.scrollHeight;
+}
+
+async function ask() {
+  const q = inputEl.value.trim();
+  if (!q) return;
+  inputEl.value = '';
+  askBtn.disabled = true;
+  addMessage(q, 'user');
+  const loadingDiv = document.createElement('div');
+  loadingDiv.className = 'msg msg-system';
+  loadingDiv.textContent = 'Searching evidence...';
+  chatEl.appendChild(loadingDiv);
+  chatEl.scrollTop = chatEl.scrollHeight;
+  try {
+    const body = { question: q };
+    if (currentSessionId) body.session_id = currentSessionId;
+    const resp = await fetch('/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    let data;
+    try {
+      data = await resp.json();
+    } catch (e) {
+      loadingDiv.remove();
+      addMessage(`Server returned ${resp.status}. The response was not valid JSON. Check that the API key is set and the server is running.`, 'system');
+      return;
+    }
+    loadingDiv.remove();
+    if (data.error) {
+      addMessage(`Error: ${data.error}`, 'system');
+    } else {
+      currentSessionId = data.session_id;
+      addMessage(data.text, 'system', data.tool_trace);
+    }
+  } catch (e) {
+    loadingDiv.remove();
+    addMessage('Error: ' + e.message, 'system');
+  } finally {
+    askBtn.disabled = false;
+    inputEl.focus();
+  }
+}
+
+async function inspectRef(type, ids, experiment) {
+  const idList = ids.split(',').map(s => s.trim());
+  if (type === 'experiment' && idList.length === 1) {
+    await loadExperiment(idList[0]);
+  } else if (type === 'comparison') {
+    await loadComparison(idList);
+  } else if (type === 'source' && idList.length === 1) {
+    await loadSource(idList[0], experiment);
+  } else if (type === 'paper' && idList.length === 1) {
+    await loadPaper(idList[0]);
+  } else if (type === 'observation' && idList.length === 1) {
+    await loadObservation(idList[0]);
+  } else if (type === 'measurement' && idList.length === 1) {
+    loadMeasurement(idList[0]);
+  } else {
+    inspectEl.innerHTML = `<div class="empty-state">Unknown reference type: ${type}</div>`;
+  }
+}
+
+async function loadExperiment(id) {
+  breadcrumbEl.textContent = `Inspection › ${id}`;
+  inspectEl.innerHTML = '<div class="inspect-loading">Loading...</div>';
+  try {
+    const resp = await fetch(`/api/experiments/${encodeURIComponent(id)}`);
+    const data = await resp.json();
+    if (data.error) {
+      inspectEl.innerHTML = `<div class="empty-state">${data.error}</div>`;
+      return;
+    }
+    let html = `<div class="card-experiment">`;
+    html += `<h5>${data.label || id}</h5>`;
+    html += `<div class="meta">${data.paper_id} · ${data.design || 'N/A'} · ${data.location || ''}</div>`;
+    html += `<table class="table table-sm"><tbody>`;
+    if (data.season) html += `<tr><td style="width:140px"><strong>Season</strong></td><td>${data.season}</td></tr>`;
+    if (data.environment) html += `<tr><td><strong>Environment</strong></td><td>${data.environment}</td></tr>`;
+    if (data.replications) html += `<tr><td><strong>Replications</strong></td><td>${data.replications}</td></tr>`;
+    html += `</tbody></table>`;
+
+    // Site properties
+    const props = data.site_properties;
+    if (props && Object.keys(props).length > 0) {
+      html += `<h6 class="mt-3">Site Properties</h6>`;
+      html += `<table class="table table-sm"><tbody>`;
+      for (const [k, v] of Object.entries(props)) {
+        const label = k.replace(/_/g, ' ');
+        html += `<tr><td style="width:140px"><strong>${label}</strong></td><td>${typeof v === 'object' ? JSON.stringify(v) : v}</td></tr>`;
+      }
+      html += `</tbody></table>`;
+    }
+
+    // Dimensions
+    const dims = data.dimensions;
+    if (dims && dims.length > 0) {
+      html += `<h6 class="mt-3">Experimental Factors</h6>`;
+      html += `<table class="table table-sm"><thead><tr><th>Factor</th><th>Role</th><th>Levels</th></tr></thead><tbody>`;
+      for (const d of dims) {
+        const levels = Array.isArray(d.levels) ? d.levels.join(', ') : (d.levels || '');
+        html += `<tr><td>${d.name}</td><td>${d.role}</td><td>${levels}</td></tr>`;
+      }
+      html += `</tbody></table>`;
+    }
+
+    // Measurements sample
+    const meas = data.measurements_sample;
+    if (meas && meas.length > 0) {
+      html += `<h6 class="mt-3">Measurements (sample)</h6>`;
+      html += `<table class="table table-sm"><thead><tr><th>Metric</th><th>Value</th><th>Unit</th><th>Source</th></tr></thead><tbody>`;
+      for (const m of meas.slice(0, 10)) {
+        const val = m.computed_value || m.value_raw || '';
+        html += `<tr><td>${m.metric}</td><td>${val}</td><td>${m.unit || ''}</td><td>${m.source_id || ''}</td></tr>`;
+      }
+      if (meas.length > 10) html += `<tr><td colspan="4" class="text-muted">... and ${meas.length - 10} more</td></tr>`;
+      html += `</tbody></table>`;
+    }
+
+    html += `</div>`;
+    inspectEl.innerHTML = html;
+  } catch (e) {
+    inspectEl.innerHTML = `<div class="empty-state">Error: ${e.message}</div>`;
+  }
+}
+
+async function loadComparison(ids) {
+  breadcrumbEl.textContent = `Inspection › Comparison: ${ids.join(' vs ')}`;
+  inspectEl.innerHTML = '<div class="inspect-loading">Loading...</div>';
+  let html = '';
+  for (const id of ids) {
+    try {
+      const resp = await fetch(`/api/experiments/${encodeURIComponent(id)}`);
+      const data = await resp.json();
+      if (!data.error) {
+        html += `<div class="card-experiment"><h5>${data.label || id}</h5>`;
+        html += `<div class="meta">${data.paper_id} · ${data.design || ''} · ${data.location || ''}</div>`;
+        const props = data.site_properties || {};
+        if (Object.keys(props).length > 0) {
+          html += '<table class="table table-sm"><tbody>';
+          for (const [k, v] of Object.entries(props)) {
+            html += `<tr><td style="width:140px"><strong>${k.replace(/_/g, ' ')}</strong></td><td>${v}</td></tr>`;
+          }
+          html += '</tbody></table>';
+        }
+        html += '</div>';
+      }
+    } catch (e) { /* skip */ }
+  }
+  inspectEl.innerHTML = html || '<div class="empty-state">Could not load comparison data.</div>';
+}
+
+async function loadSource(sourceId, experimentId) {
+  breadcrumbEl.textContent = `Inspection › ${sourceId}`;
+  inspectEl.innerHTML = '<div class="inspect-loading">Loading...</div>';
+  if (!experimentId) {
+    inspectEl.innerHTML = '<div class="empty-state">Select an experiment first, then click the source reference.</div>';
+    return;
+  }
+  try {
+    const resp = await fetch(`/api/source/${encodeURIComponent(experimentId)}/${encodeURIComponent(sourceId)}`);
+    const data = await resp.json();
+    const paperId = experimentId.split('_')[0];
+    const page = data.page_number;
+    if (page) {
+      const pdfUrl = `/api/papers/${encodeURIComponent(paperId)}/pdf#page=${page}`;
+      inspectEl.innerHTML = `
+        <div style="margin-bottom:0.5rem"><strong>${sourceId}</strong> · Page ${page} · <a href="${pdfUrl}" target="_blank">Open in new tab</a></div>
+        <embed src="${pdfUrl}" type="application/pdf" style="width:100%;height:600px;border:1px solid #ccc;border-radius:4px;">
+      `;
+    } else {
+      let html = `<div class="card-experiment"><h5>${sourceId}</h5>`;
+      html += `<div class="meta">${experimentId} · ${data.source_type || ''}`;
+      if (data.source_purpose) html += ` · ${data.source_purpose}`;
+      html += `</div>`;
+      const obs = data.observations || [];
+      if (obs.length > 0) {
+        html += '<table class="table table-sm"><thead><tr><th>Factors</th><th>Metric</th><th>Value</th><th>Unit</th></tr></thead><tbody>';
+        for (const o of obs.slice(0, 30)) {
+          const fv = o.factor_values ? Object.values(o.factor_values).join('·') : o.observation_id;
+          for (const m of (o.measurements || []).slice(0, 5)) {
+            const val = m.computed_value || m.value_raw || '';
+            html += `<tr><td>${fv}</td><td>${m.metric}</td><td>${val}</td><td>${m.unit || ''}</td></tr>`;
+          }
+        }
+        html += '</tbody></table>';
+      } else {
+        html += '<div class="empty-state">No structured data for this source.</div>';
+      }
+      html += '</div>';
+      inspectEl.innerHTML = html;
+    }
+  } catch (e) {
+    inspectEl.innerHTML = `<div class="empty-state">Error: ${e.message}</div>`;
+  }
+}
+
+function loadPaper(paperId) {
+  breadcrumbEl.textContent = `Inspection › Paper: ${paperId}`;
+  inspectEl.innerHTML = `<div class="empty-state">Paper view coming soon. Try clicking an experiment reference instead.</div>`;
+}
+
+function loadObservation(obsId) {
+  // Observations with M- prefix are measurement IDs — look up via measurement API
+  if (obsId.startsWith('M-')) {
+    loadMeasurement(obsId);
+    return;
+  }
+  breadcrumbEl.textContent = `Inspection › Observation: ${obsId}`;
+  inspectEl.innerHTML = `<div class="empty-state">Observation view coming soon.</div>`;
+}
+
+async function loadMeasurement(id) {
+  breadcrumbEl.textContent = `Inspection › ${id}`;
+  inspectEl.innerHTML = '<div class="inspect-loading">Loading...</div>';
+  try {
+    const resp = await fetch(`/api/measurements/${encodeURIComponent(id)}`);
+    const data = await resp.json();
+    if (data.error) {
+      inspectEl.innerHTML = `<div class="empty-state">${data.error}</div>`;
+      return;
+    }
+    // If we have a page number, show the PDF directly
+    if (data.page_number && data.paper_id) {
+      const pdfUrl = `/api/papers/${encodeURIComponent(data.paper_id)}/pdf#page=${data.page_number}`;
+      inspectEl.innerHTML = `
+        <div style="margin-bottom:0.5rem">
+          <strong>${data.source_id}</strong> · Page ${data.page_number} ·
+          ${data.metric}: ${data.computed_value || data.value_raw || ''} ${data.unit || ''} ·
+          <a href="${pdfUrl}" target="_blank">Open in new tab</a>
+        </div>
+        <embed src="${pdfUrl}" type="application/pdf" style="width:100%;height:600px;border:1px solid #ccc;border-radius:4px;">
+      `;
+      return;
+    }
+    const val = data.computed_value || data.value_raw || '(empty)';
+    const unit = data.unit || '';
+    let html = `<div class="card-experiment"><h5>${data.metric}: ${val} ${unit}</h5>`;
+    html += `<div class="meta">${data.experiment_id} · ${data.source_id}</div>`;
+    html += `<table class="table table-sm"><tbody>`;
+    if (data.statistic) html += `<tr><td style="width:140px"><strong>Statistic</strong></td><td>${data.statistic}</td></tr>`;
+    if (data.significance_letter) html += `<tr><td><strong>Significance</strong></td><td>${data.significance_letter}</td></tr>`;
+    if (data.construct) html += `<tr><td><strong>Construct</strong></td><td>${data.construct}</td></tr>`;
+    html += `<tr><td><strong>Provenance</strong></td><td>${data.provenance || ''}</td></tr>`;
+    html += `</tbody></table>`;
+    const fv = data.factor_values;
+    if (fv && Object.keys(fv).length > 0) {
+      html += `<h6 class="mt-3">Factor Context</h6>`;
+      html += `<table class="table table-sm"><tbody>`;
+      for (const [k, v] of Object.entries(fv)) {
+        html += `<tr><td style="width:140px"><strong>${k.replace(/_/g, ' ')}</strong></td><td>${v}</td></tr>`;
+      }
+      html += `</tbody></table>`;
+    }
+    html += `</div>`;
+    inspectEl.innerHTML = html;
+  } catch (e) {
+    inspectEl.innerHTML = `<div class="empty-state">Error: ${e.message}</div>`;
+  }
+}
+
+// Initial focus
+inputEl.focus();
+</script>
+</body>
+</html>

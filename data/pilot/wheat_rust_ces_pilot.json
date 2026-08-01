@@ -1,0 +1,3291 @@
+{
+  "studies": [
+    {
+      "study_id": "S1",
+      "citation": "Status of Ethiopian durum wheat varieties for stem rust disease resistance under field condition",
+      "year": "2017, 2020, 2021",
+      "sites": [
+        "Debre Zeit"
+      ],
+      "institution": null,
+      "design": "field hotspot screening",
+      "n_units_screened": 34,
+      "source_url": "https://www.academia.edu/109118751/",
+      "extraction_completeness": "abstract_only"
+    },
+    {
+      "study_id": "S2",
+      "citation": "Evaluation of Adult Plant Resistance in Bread Wheat Genotypes to Wheat Stem Rust Races in Ethiopia",
+      "year": "2021",
+      "sites": [
+        "unspecified (greenhouse + field)"
+      ],
+      "institution": null,
+      "design": "augmented design",
+      "n_units_screened": 20,
+      "source_url": "https://www.sciencepublishinggroup.com/article/10.11648/j.ajpb.20251004.16",
+      "extraction_completeness": "abstract_only"
+    },
+    {
+      "study_id": "S3",
+      "citation": "Field Evaluation of Bread Wheat Genotypes for Stripe Rust Resistance in Arsi Highlands, South-Eastern Ethiopia",
+      "year": "2022-2023 offseason",
+      "sites": [
+        "Kulumsa Agricultural Research Center"
+      ],
+      "institution": null,
+      "design": "artificial inoculation on spreader rows",
+      "n_units_screened": null,
+      "source_url": "https://www.researchgate.net/publication/344387369",
+      "extraction_completeness": "abstract_only"
+    },
+    {
+      "study_id": "S4",
+      "citation": "Evaluation of Ethiopian Bread Wheat Cultivars for Slow Rusting Resistance to Yellow Rust",
+      "year": "2019-2020",
+      "sites": [
+        "Kulumsa",
+        "Meraro",
+        "Bekoji"
+      ],
+      "institution": null,
+      "design": null,
+      "n_units_screened": 25,
+      "source_url": "https://www.sciencepublishinggroup.com/article/10057592",
+      "extraction_completeness": "abstract_only"
+    },
+    {
+      "study_id": "S5",
+      "citation": "Seedling Evaluation, Gene Postulation, and Characterization of Bread Wheat Genotypes against Wheat Stem Rust Pathotypes in Bale",
+      "year": "2021/2022",
+      "sites": [
+        "Agarfa",
+        "Sinana"
+      ],
+      "institution": null,
+      "design": null,
+      "n_units_screened": null,
+      "source_url": "https://www.researchsquare.com/article/rs-9263221/v1",
+      "extraction_completeness": "abstract_only"
+    },
+    {
+      "study_id": "S6",
+      "citation": "Evaluation of bread wheat for both seedling and adult plant resistance to stem rust",
+      "year": "2012 (field), 2013 (field)",
+      "sites": [
+        "unspecified hotspot site(s)"
+      ],
+      "institution": null,
+      "design": null,
+      "n_units_screened": 252,
+      "source_url": "https://www.academia.edu/4448004/",
+      "extraction_completeness": "abstract_only"
+    },
+    {
+      "study_id": "S7",
+      "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+      "year": "2022",
+      "sites": [
+        "Enarjenawuga district, Metaya Kebele FTC"
+      ],
+      "institution": null,
+      "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+      "n_units_screened": null,
+      "source_url": "https://www.researchgate.net/publication/345161865",
+      "extraction_completeness": "abstract_only"
+    },
+    {
+      "study_id": "S8",
+      "citation": "Evaluation of Bread Wheat Genotypes for Yellow and Stem Rust Adult Plant Resistance and Disease Impact on Grain Yield",
+      "year": "2016/17, 2017/18",
+      "sites": [
+        "Kulumsa (per acknowledgments)"
+      ],
+      "institution": "EIAR / Kulumsa Agricultural Research Center",
+      "design": null,
+      "n_units_screened": null,
+      "source_url": "https://www.abrinternationaljournal.org/articles/...106881.html",
+      "extraction_completeness": "abstract_only"
+    },
+    {
+      "study_id": "S9",
+      "citation": "Evaluation of bread wheat genotypes for adult plant resistance to stem rust",
+      "year": "2018",
+      "sites": [
+        "Kulumsa",
+        "Asassa"
+      ],
+      "institution": null,
+      "design": null,
+      "n_units_screened": 28,
+      "source_url": "https://lupinepublishers.com/agriculture-journal/fulltext/evaluation-of-bread-wheat-genotypes-for-adult-plant-resistance-to-stem-rust.ID.000307.php",
+      "extraction_completeness": "abstract_only"
+    }
+  ],
+  "ctrs": [
+    {
+      "ctr_id": "CTR-S1-Oda",
+      "study": {
+        "study_id": "S1",
+        "citation": "Status of Ethiopian durum wheat varieties for stem rust disease resistance under field condition",
+        "year": "2017, 2020, 2021",
+        "sites": [
+          "Debre Zeit"
+        ],
+        "institution": null,
+        "design": "field hotspot screening",
+        "n_units_screened": 34,
+        "source_url": "https://www.academia.edu/109118751/",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Oda",
+        "canonical_name": "Oda",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Oda",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Debre Zeit",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici (stem rust)",
+        "races_tested": [],
+        "growth_stage": "field/adult_plant"
+      },
+      "notes": "low AUDPC/ACI/TRS, MR infection type \u2014 possible major resistance gene(s) \u2014 numeric values not in abstract; needs full text."
+    },
+    {
+      "ctr_id": "CTR-S1-Tob-66",
+      "study": {
+        "study_id": "S1",
+        "citation": "Status of Ethiopian durum wheat varieties for stem rust disease resistance under field condition",
+        "year": "2017, 2020, 2021",
+        "sites": [
+          "Debre Zeit"
+        ],
+        "institution": null,
+        "design": "field hotspot screening",
+        "n_units_screened": 34,
+        "source_url": "https://www.academia.edu/109118751/",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Tob-66",
+        "canonical_name": "Tob-66",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Tob-66",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Debre Zeit",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici (stem rust)",
+        "races_tested": [],
+        "growth_stage": "field/adult_plant"
+      },
+      "notes": "low AUDPC/ACI/TRS, MR infection type \u2014 possible major resistance gene(s) \u2014 numeric values not in abstract; needs full text."
+    },
+    {
+      "ctr_id": "CTR-S1-Boohie",
+      "study": {
+        "study_id": "S1",
+        "citation": "Status of Ethiopian durum wheat varieties for stem rust disease resistance under field condition",
+        "year": "2017, 2020, 2021",
+        "sites": [
+          "Debre Zeit"
+        ],
+        "institution": null,
+        "design": "field hotspot screening",
+        "n_units_screened": 34,
+        "source_url": "https://www.academia.edu/109118751/",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Boohie",
+        "canonical_name": "Boohie",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Boohie",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Debre Zeit",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici (stem rust)",
+        "races_tested": [],
+        "growth_stage": "field/adult_plant"
+      },
+      "notes": "moderate field resistance \u2014 numeric values not in abstract; needs full text."
+    },
+    {
+      "ctr_id": "CTR-S1-Kilinto",
+      "study": {
+        "study_id": "S1",
+        "citation": "Status of Ethiopian durum wheat varieties for stem rust disease resistance under field condition",
+        "year": "2017, 2020, 2021",
+        "sites": [
+          "Debre Zeit"
+        ],
+        "institution": null,
+        "design": "field hotspot screening",
+        "n_units_screened": 34,
+        "source_url": "https://www.academia.edu/109118751/",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Kilinto",
+        "canonical_name": "Kilinto",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Kilinto",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Debre Zeit",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici (stem rust)",
+        "races_tested": [],
+        "growth_stage": "field/adult_plant"
+      },
+      "notes": "moderate field resistance \u2014 numeric values not in abstract; needs full text."
+    },
+    {
+      "ctr_id": "CTR-S1-Ginchi",
+      "study": {
+        "study_id": "S1",
+        "citation": "Status of Ethiopian durum wheat varieties for stem rust disease resistance under field condition",
+        "year": "2017, 2020, 2021",
+        "sites": [
+          "Debre Zeit"
+        ],
+        "institution": null,
+        "design": "field hotspot screening",
+        "n_units_screened": 34,
+        "source_url": "https://www.academia.edu/109118751/",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Ginchi",
+        "canonical_name": "Ginchi",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Ginchi",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Debre Zeit",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici (stem rust)",
+        "races_tested": [],
+        "growth_stage": "field/adult_plant"
+      },
+      "notes": "moderate field resistance \u2014 numeric values not in abstract; needs full text."
+    },
+    {
+      "ctr_id": "CTR-S1-Robe",
+      "study": {
+        "study_id": "S1",
+        "citation": "Status of Ethiopian durum wheat varieties for stem rust disease resistance under field condition",
+        "year": "2017, 2020, 2021",
+        "sites": [
+          "Debre Zeit"
+        ],
+        "institution": null,
+        "design": "field hotspot screening",
+        "n_units_screened": 34,
+        "source_url": "https://www.academia.edu/109118751/",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Robe",
+        "canonical_name": "Robe",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Robe",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Debre Zeit",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici (stem rust)",
+        "races_tested": [],
+        "growth_stage": "field/adult_plant"
+      },
+      "notes": "moderate field resistance \u2014 numeric values not in abstract; needs full text."
+    },
+    {
+      "ctr_id": "CTR-S1-Toltu",
+      "study": {
+        "study_id": "S1",
+        "citation": "Status of Ethiopian durum wheat varieties for stem rust disease resistance under field condition",
+        "year": "2017, 2020, 2021",
+        "sites": [
+          "Debre Zeit"
+        ],
+        "institution": null,
+        "design": "field hotspot screening",
+        "n_units_screened": 34,
+        "source_url": "https://www.academia.edu/109118751/",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Toltu",
+        "canonical_name": "Toltu",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Toltu",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Debre Zeit",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici (stem rust)",
+        "races_tested": [],
+        "growth_stage": "field/adult_plant"
+      },
+      "notes": "moderate field resistance \u2014 numeric values not in abstract; needs full text."
+    },
+    {
+      "ctr_id": "CTR-S1-Lelisso",
+      "study": {
+        "study_id": "S1",
+        "citation": "Status of Ethiopian durum wheat varieties for stem rust disease resistance under field condition",
+        "year": "2017, 2020, 2021",
+        "sites": [
+          "Debre Zeit"
+        ],
+        "institution": null,
+        "design": "field hotspot screening",
+        "n_units_screened": 34,
+        "source_url": "https://www.academia.edu/109118751/",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Lelisso",
+        "canonical_name": "Lelisso",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Lelisso",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Debre Zeit",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici (stem rust)",
+        "races_tested": [],
+        "growth_stage": "field/adult_plant"
+      },
+      "notes": "moderate field resistance \u2014 numeric values not in abstract; needs full text."
+    },
+    {
+      "ctr_id": "CTR-S1-Bekelcha",
+      "study": {
+        "study_id": "S1",
+        "citation": "Status of Ethiopian durum wheat varieties for stem rust disease resistance under field condition",
+        "year": "2017, 2020, 2021",
+        "sites": [
+          "Debre Zeit"
+        ],
+        "institution": null,
+        "design": "field hotspot screening",
+        "n_units_screened": 34,
+        "source_url": "https://www.academia.edu/109118751/",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Bekelcha",
+        "canonical_name": "Bekelcha",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Bekelcha",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Debre Zeit",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici (stem rust)",
+        "races_tested": [],
+        "growth_stage": "field/adult_plant"
+      },
+      "notes": "moderate field resistance \u2014 numeric values not in abstract; needs full text."
+    },
+    {
+      "ctr_id": "CTR-S2-group1",
+      "study": {
+        "study_id": "S2",
+        "citation": "Evaluation of Adult Plant Resistance in Bread Wheat Genotypes to Wheat Stem Rust Races in Ethiopia",
+        "year": "2021",
+        "sites": [
+          "unspecified (greenhouse + field)"
+        ],
+        "institution": null,
+        "design": "augmented design",
+        "n_units_screened": 20,
+        "source_url": "https://www.sciencepublishinggroup.com/article/10.11648/j.ajpb.20251004.16",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-group1",
+        "canonical_name": "Genotypes 40, 56 (near-isogenic lines)",
+        "raw_names_seen": [],
+        "unit_type": "advanced_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-race",
+          "factor": "pathogen_race",
+          "value": "11 Pgt races tested",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-IT",
+          "construct": "rust_severity",
+          "metric": "seedling_IT",
+          "value": "low",
+          "scale": "ordinal",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": null,
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [
+          "TTKTF",
+          "TKPTF",
+          "TTKTT",
+          "(9 others unspecified)"
+        ],
+        "growth_stage": "seedling"
+      },
+      "notes": "Resistant to all races tested (Group I)."
+    },
+    {
+      "ctr_id": "CTR-S3-Boru",
+      "study": {
+        "study_id": "S3",
+        "citation": "Field Evaluation of Bread Wheat Genotypes for Stripe Rust Resistance in Arsi Highlands, South-Eastern Ethiopia",
+        "year": "2022-2023 offseason",
+        "sites": [
+          "Kulumsa Agricultural Research Center"
+        ],
+        "institution": null,
+        "design": "artificial inoculation on spreader rows",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/344387369",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Boru",
+        "canonical_name": "Boru",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Boru",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-FRS",
+          "construct": "rust_severity",
+          "metric": "FRS",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa",
+        "season_year": null,
+        "pathogen": "Puccinia striiformis (stripe/yellow rust)",
+        "races_tested": [
+          "TTKTF",
+          "TKKTF",
+          "TTKTT",
+          "TTTTF"
+        ],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Released variety, low FRS and ACI \u2014 slow rusting resistance."
+    },
+    {
+      "ctr_id": "CTR-S3-Abay",
+      "study": {
+        "study_id": "S3",
+        "citation": "Field Evaluation of Bread Wheat Genotypes for Stripe Rust Resistance in Arsi Highlands, South-Eastern Ethiopia",
+        "year": "2022-2023 offseason",
+        "sites": [
+          "Kulumsa Agricultural Research Center"
+        ],
+        "institution": null,
+        "design": "artificial inoculation on spreader rows",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/344387369",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Abay",
+        "canonical_name": "Abay",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Abay",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-FRS",
+          "construct": "rust_severity",
+          "metric": "FRS",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa",
+        "season_year": null,
+        "pathogen": "Puccinia striiformis (stripe/yellow rust)",
+        "races_tested": [
+          "TTKTF",
+          "TKKTF",
+          "TTKTT",
+          "TTTTF"
+        ],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Released variety, low FRS and ACI \u2014 slow rusting resistance."
+    },
+    {
+      "ctr_id": "CTR-S3-Shaki",
+      "study": {
+        "study_id": "S3",
+        "citation": "Field Evaluation of Bread Wheat Genotypes for Stripe Rust Resistance in Arsi Highlands, South-Eastern Ethiopia",
+        "year": "2022-2023 offseason",
+        "sites": [
+          "Kulumsa Agricultural Research Center"
+        ],
+        "institution": null,
+        "design": "artificial inoculation on spreader rows",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/344387369",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Shaki",
+        "canonical_name": "Shaki",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Shaki",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-FRS",
+          "construct": "rust_severity",
+          "metric": "FRS",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa",
+        "season_year": null,
+        "pathogen": "Puccinia striiformis (stripe/yellow rust)",
+        "races_tested": [
+          "TTKTF",
+          "TKKTF",
+          "TTKTT",
+          "TTTTF"
+        ],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Released variety, low FRS and ACI \u2014 slow rusting resistance."
+    },
+    {
+      "ctr_id": "CTR-S3-Kakaba",
+      "study": {
+        "study_id": "S3",
+        "citation": "Field Evaluation of Bread Wheat Genotypes for Stripe Rust Resistance in Arsi Highlands, South-Eastern Ethiopia",
+        "year": "2022-2023 offseason",
+        "sites": [
+          "Kulumsa Agricultural Research Center"
+        ],
+        "institution": null,
+        "design": "artificial inoculation on spreader rows",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/344387369",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Kakaba",
+        "canonical_name": "Kakaba",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Kakaba",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-FRS",
+          "construct": "rust_severity",
+          "metric": "FRS",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa",
+        "season_year": null,
+        "pathogen": "Puccinia striiformis (stripe/yellow rust)",
+        "races_tested": [
+          "TTKTF",
+          "TKKTF",
+          "TTKTT",
+          "TTTTF"
+        ],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Released variety, low FRS and ACI \u2014 slow rusting resistance."
+    },
+    {
+      "ctr_id": "CTR-S3-Deka",
+      "study": {
+        "study_id": "S3",
+        "citation": "Field Evaluation of Bread Wheat Genotypes for Stripe Rust Resistance in Arsi Highlands, South-Eastern Ethiopia",
+        "year": "2022-2023 offseason",
+        "sites": [
+          "Kulumsa Agricultural Research Center"
+        ],
+        "institution": null,
+        "design": "artificial inoculation on spreader rows",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/344387369",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Deka",
+        "canonical_name": "Deka",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Deka",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-FRS",
+          "construct": "rust_severity",
+          "metric": "FRS",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa",
+        "season_year": null,
+        "pathogen": "Puccinia striiformis (stripe/yellow rust)",
+        "races_tested": [
+          "TTKTF",
+          "TKKTF",
+          "TTKTT",
+          "TTTTF"
+        ],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Released variety, low FRS and ACI \u2014 slow rusting resistance."
+    },
+    {
+      "ctr_id": "CTR-S3-Dursa",
+      "study": {
+        "study_id": "S3",
+        "citation": "Field Evaluation of Bread Wheat Genotypes for Stripe Rust Resistance in Arsi Highlands, South-Eastern Ethiopia",
+        "year": "2022-2023 offseason",
+        "sites": [
+          "Kulumsa Agricultural Research Center"
+        ],
+        "institution": null,
+        "design": "artificial inoculation on spreader rows",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/344387369",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Dursa",
+        "canonical_name": "Dursa",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Dursa",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-FRS",
+          "construct": "rust_severity",
+          "metric": "FRS",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "low",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa",
+        "season_year": null,
+        "pathogen": "Puccinia striiformis (stripe/yellow rust)",
+        "races_tested": [
+          "TTKTF",
+          "TKKTF",
+          "TTKTT",
+          "TTTTF"
+        ],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Released variety, low FRS and ACI \u2014 slow rusting resistance."
+    },
+    {
+      "ctr_id": "CTR-S4-summary",
+      "study": {
+        "study_id": "S4",
+        "citation": "Evaluation of Ethiopian Bread Wheat Cultivars for Slow Rusting Resistance to Yellow Rust",
+        "year": "2019-2020",
+        "sites": [
+          "Kulumsa",
+          "Meraro",
+          "Bekoji"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 25,
+        "source_url": "https://www.sciencepublishinggroup.com/article/10057592",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-S4-cohort",
+        "canonical_name": "25 newly developed bread wheat cultivars (not individually named in abstract)",
+        "raw_names_seen": [],
+        "unit_type": "advanced_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-site",
+          "factor": "site",
+          "value": "Kulumsa/Meraro/Bekoji",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-FRS",
+          "construct": "rust_severity",
+          "metric": "FRS",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-rAUDPC",
+          "construct": "rust_severity",
+          "metric": "rAUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": null,
+        "season_year": null,
+        "pathogen": "Puccinia striiformis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Per-cultivar values not in abstract \u2014 needs full text for unit-level extraction."
+    },
+    {
+      "ctr_id": "CTR-S5-Kingbird",
+      "study": {
+        "study_id": "S5",
+        "citation": "Seedling Evaluation, Gene Postulation, and Characterization of Bread Wheat Genotypes against Wheat Stem Rust Pathotypes in Bale",
+        "year": "2021/2022",
+        "sites": [
+          "Agarfa",
+          "Sinana"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": null,
+        "source_url": "https://www.researchsquare.com/article/rs-9263221/v1",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Kingbird",
+        "canonical_name": "Kingbird",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Kingbird",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": "<300",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Agarfa/Sinana",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "both"
+      },
+      "notes": "Slow-rusting; carries Sr11/Sr36/Sr30/Sr24 per combined field+seedling evaluation."
+    },
+    {
+      "ctr_id": "CTR-S5-Pavon_76",
+      "study": {
+        "study_id": "S5",
+        "citation": "Seedling Evaluation, Gene Postulation, and Characterization of Bread Wheat Genotypes against Wheat Stem Rust Pathotypes in Bale",
+        "year": "2021/2022",
+        "sites": [
+          "Agarfa",
+          "Sinana"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": null,
+        "source_url": "https://www.researchsquare.com/article/rs-9263221/v1",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Pavon 76",
+        "canonical_name": "Pavon 76",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Pavon 76",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": "<300",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Agarfa/Sinana",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "both"
+      },
+      "notes": "Slow-rusting; carries Sr11/Sr36/Sr30/Sr24 per combined field+seedling evaluation."
+    },
+    {
+      "ctr_id": "CTR-S5-Sofumer",
+      "study": {
+        "study_id": "S5",
+        "citation": "Seedling Evaluation, Gene Postulation, and Characterization of Bread Wheat Genotypes against Wheat Stem Rust Pathotypes in Bale",
+        "year": "2021/2022",
+        "sites": [
+          "Agarfa",
+          "Sinana"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": null,
+        "source_url": "https://www.researchsquare.com/article/rs-9263221/v1",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Sofumer",
+        "canonical_name": "Sofumer",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Sofumer",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": "<300",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Agarfa/Sinana",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "both"
+      },
+      "notes": "Slow-rusting; carries Sr11/Sr36/Sr30/Sr24 per combined field+seedling evaluation."
+    },
+    {
+      "ctr_id": "CTR-S6-funnel",
+      "study": {
+        "study_id": "S6",
+        "citation": "Evaluation of bread wheat for both seedling and adult plant resistance to stem rust",
+        "year": "2012 (field), 2013 (field)",
+        "sites": [
+          "unspecified hotspot site(s)"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 252,
+        "source_url": "https://www.academia.edu/4448004/",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-S6-cohort",
+        "canonical_name": "252 accessions -> 91 -> 38 advanced through screening funnel",
+        "raw_names_seen": [],
+        "unit_type": "advanced_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-stage",
+          "factor": "screening_stage",
+          "value": "seedling(Ug99) -> field 2012 -> field 2013",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-FRS",
+          "construct": "rust_severity",
+          "metric": "FRS",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-rAUDPC",
+          "construct": "rust_severity",
+          "metric": "rAUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": null,
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici (Ug99)",
+        "races_tested": [],
+        "growth_stage": "both"
+      },
+      "notes": "Multi-stage advancement funnel, not a single flat trial \u2014 model as sequential screening stages, not independent conditions. Individual line IDs not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Ogolcho-freq0",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Ogolcho",
+        "canonical_name": "Ogolcho",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Ogolcho",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "0",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Ogolcho-freq1",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Ogolcho",
+        "canonical_name": "Ogolcho",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Ogolcho",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "1",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Ogolcho-freq2",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Ogolcho",
+        "canonical_name": "Ogolcho",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Ogolcho",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "2",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Ogolcho-freq3",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Ogolcho",
+        "canonical_name": "Ogolcho",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Ogolcho",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "3",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Lemu-freq0",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Lemu",
+        "canonical_name": "Lemu",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Lemu",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "0",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Lemu-freq1",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Lemu",
+        "canonical_name": "Lemu",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Lemu",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "1",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Lemu-freq2",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Lemu",
+        "canonical_name": "Lemu",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Lemu",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "2",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Lemu-freq3",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Lemu",
+        "canonical_name": "Lemu",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Lemu",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "3",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Hidase-freq0",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Hidase",
+        "canonical_name": "Hidase",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Hidase",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "0",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Hidase-freq1",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Hidase",
+        "canonical_name": "Hidase",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Hidase",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "1",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Hidase-freq2",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Hidase",
+        "canonical_name": "Hidase",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Hidase",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "2",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-Hidase-freq3",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-Hidase",
+        "canonical_name": "Hidase",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "Hidase",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "3",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-local_check-freq0",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-local_check",
+        "canonical_name": "local_check",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "local_check",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "0",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-local_check-freq1",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-local_check",
+        "canonical_name": "local_check",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "local_check",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "1",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-local_check-freq2",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-local_check",
+        "canonical_name": "local_check",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "local_check",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "2",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S7-local_check-freq3",
+      "study": {
+        "study_id": "S7",
+        "citation": "Evaluation of Bread Wheat Genotypes for Stem and Yellow Rust Resistance in Ethiopia (integrated management trial)",
+        "year": "2022",
+        "sites": [
+          "Enarjenawuga district, Metaya Kebele FTC"
+        ],
+        "institution": null,
+        "design": "16 treatment combinations (4 varieties x 4 fungicide frequencies)",
+        "n_units_screened": null,
+        "source_url": "https://www.researchgate.net/publication/345161865",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-local_check",
+        "canonical_name": "local_check",
+        "raw_names_seen": [],
+        "unit_type": "released_variety"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "local_check",
+          "scale": "categorical"
+        },
+        {
+          "condition_id": "C-fungicide-freq",
+          "factor": "fungicide_application_frequency",
+          "value": "3",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Enarjenawuga",
+        "season_year": null,
+        "pathogen": "stem rust / yellow rust (both assessed)",
+        "races_tested": [],
+        "growth_stage": null
+      },
+      "notes": "Fungicide product: Tilt250EC. Per-cell values not in abstract."
+    },
+    {
+      "ctr_id": "CTR-S8-summary",
+      "study": {
+        "study_id": "S8",
+        "citation": "Evaluation of Bread Wheat Genotypes for Yellow and Stem Rust Adult Plant Resistance and Disease Impact on Grain Yield",
+        "year": "2016/17, 2017/18",
+        "sites": [
+          "Kulumsa (per acknowledgments)"
+        ],
+        "institution": "EIAR / Kulumsa Agricultural Research Center",
+        "design": null,
+        "n_units_screened": null,
+        "source_url": "https://www.abrinternationaljournal.org/articles/...106881.html",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-S8-cohort",
+        "canonical_name": "genotype cohort (not individually named in abstract)",
+        "raw_names_seen": [],
+        "unit_type": "advanced_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-season",
+          "factor": "season_year",
+          "value": "2016/17 vs 2017/18",
+          "scale": "ordinal"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-CI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": "severity(%) x reaction_constant [R=.2,MR=.4,M=.6,MS=.8,S=1]"
+        },
+        {
+          "outcome_id": "O-AUDPC",
+          "construct": "rust_severity",
+          "metric": "AUDPC",
+          "value": null,
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "trajectory",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-yield",
+          "construct": "grain_yield",
+          "metric": "yield_loss",
+          "value": null,
+          "scale": "continuous",
+          "direction": "higher_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": null,
+        "season_year": null,
+        "pathogen": "stem rust + yellow rust",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "ONLY study of the 9 that explicitly links a rust-severity metric to grain yield impact. CI formula given explicitly in abstract: this is the source of the canonical CI definition used across CTR records here. Classification bands: 1-20 high resistance, 21-40 intermediate, 41-100 low resistance."
+    },
+    {
+      "ctr_id": "CTR-S9-ETBW-8858",
+      "study": {
+        "study_id": "S9",
+        "citation": "Evaluation of bread wheat genotypes for adult plant resistance to stem rust",
+        "year": "2018",
+        "sites": [
+          "Kulumsa",
+          "Asassa"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 28,
+        "source_url": "https://lupinepublishers.com/agriculture-journal/fulltext/evaluation-of-bread-wheat-genotypes-for-adult-plant-resistance-to-stem-rust.ID.000307.php",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-ETBW-8858",
+        "canonical_name": "ETBW-8858",
+        "raw_names_seen": [],
+        "unit_type": "breeding_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "ETBW-8858",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": "<30",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "<20",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa & Asassa",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Meets adult-plant resistance threshold (TRS<30 AND ACI<20) at both sites."
+    },
+    {
+      "ctr_id": "CTR-S9-ETBW-8870",
+      "study": {
+        "study_id": "S9",
+        "citation": "Evaluation of bread wheat genotypes for adult plant resistance to stem rust",
+        "year": "2018",
+        "sites": [
+          "Kulumsa",
+          "Asassa"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 28,
+        "source_url": "https://lupinepublishers.com/agriculture-journal/fulltext/evaluation-of-bread-wheat-genotypes-for-adult-plant-resistance-to-stem-rust.ID.000307.php",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-ETBW-8870",
+        "canonical_name": "ETBW-8870",
+        "raw_names_seen": [],
+        "unit_type": "breeding_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "ETBW-8870",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": "<30",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "<20",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa & Asassa",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Meets adult-plant resistance threshold (TRS<30 AND ACI<20) at both sites."
+    },
+    {
+      "ctr_id": "CTR-S9-ETBW-8583",
+      "study": {
+        "study_id": "S9",
+        "citation": "Evaluation of bread wheat genotypes for adult plant resistance to stem rust",
+        "year": "2018",
+        "sites": [
+          "Kulumsa",
+          "Asassa"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 28,
+        "source_url": "https://lupinepublishers.com/agriculture-journal/fulltext/evaluation-of-bread-wheat-genotypes-for-adult-plant-resistance-to-stem-rust.ID.000307.php",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-ETBW-8583",
+        "canonical_name": "ETBW-8583",
+        "raw_names_seen": [],
+        "unit_type": "breeding_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "ETBW-8583",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": "<30",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "<20",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa & Asassa",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Meets adult-plant resistance threshold (TRS<30 AND ACI<20) at both sites."
+    },
+    {
+      "ctr_id": "CTR-S9-ETBW-8684",
+      "study": {
+        "study_id": "S9",
+        "citation": "Evaluation of bread wheat genotypes for adult plant resistance to stem rust",
+        "year": "2018",
+        "sites": [
+          "Kulumsa",
+          "Asassa"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 28,
+        "source_url": "https://lupinepublishers.com/agriculture-journal/fulltext/evaluation-of-bread-wheat-genotypes-for-adult-plant-resistance-to-stem-rust.ID.000307.php",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-ETBW-8684",
+        "canonical_name": "ETBW-8684",
+        "raw_names_seen": [],
+        "unit_type": "breeding_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "ETBW-8684",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": "<30",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "<20",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa & Asassa",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Meets adult-plant resistance threshold (TRS<30 AND ACI<20) at both sites."
+    },
+    {
+      "ctr_id": "CTR-S9-ETBW-9548",
+      "study": {
+        "study_id": "S9",
+        "citation": "Evaluation of bread wheat genotypes for adult plant resistance to stem rust",
+        "year": "2018",
+        "sites": [
+          "Kulumsa",
+          "Asassa"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 28,
+        "source_url": "https://lupinepublishers.com/agriculture-journal/fulltext/evaluation-of-bread-wheat-genotypes-for-adult-plant-resistance-to-stem-rust.ID.000307.php",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-ETBW-9548",
+        "canonical_name": "ETBW-9548",
+        "raw_names_seen": [],
+        "unit_type": "breeding_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "ETBW-9548",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": "<30",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "<20",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa & Asassa",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Meets adult-plant resistance threshold (TRS<30 AND ACI<20) at both sites."
+    },
+    {
+      "ctr_id": "CTR-S9-ETBW-9549",
+      "study": {
+        "study_id": "S9",
+        "citation": "Evaluation of bread wheat genotypes for adult plant resistance to stem rust",
+        "year": "2018",
+        "sites": [
+          "Kulumsa",
+          "Asassa"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 28,
+        "source_url": "https://lupinepublishers.com/agriculture-journal/fulltext/evaluation-of-bread-wheat-genotypes-for-adult-plant-resistance-to-stem-rust.ID.000307.php",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-ETBW-9549",
+        "canonical_name": "ETBW-9549",
+        "raw_names_seen": [],
+        "unit_type": "breeding_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "ETBW-9549",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": "<30",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "<20",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa & Asassa",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Meets adult-plant resistance threshold (TRS<30 AND ACI<20) at both sites."
+    },
+    {
+      "ctr_id": "CTR-S9-ETBW-9554",
+      "study": {
+        "study_id": "S9",
+        "citation": "Evaluation of bread wheat genotypes for adult plant resistance to stem rust",
+        "year": "2018",
+        "sites": [
+          "Kulumsa",
+          "Asassa"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 28,
+        "source_url": "https://lupinepublishers.com/agriculture-journal/fulltext/evaluation-of-bread-wheat-genotypes-for-adult-plant-resistance-to-stem-rust.ID.000307.php",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-ETBW-9554",
+        "canonical_name": "ETBW-9554",
+        "raw_names_seen": [],
+        "unit_type": "breeding_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "ETBW-9554",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": "<30",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "<20",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa & Asassa",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Meets adult-plant resistance threshold (TRS<30 AND ACI<20) at both sites."
+    },
+    {
+      "ctr_id": "CTR-S9-ETBW-9558",
+      "study": {
+        "study_id": "S9",
+        "citation": "Evaluation of bread wheat genotypes for adult plant resistance to stem rust",
+        "year": "2018",
+        "sites": [
+          "Kulumsa",
+          "Asassa"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 28,
+        "source_url": "https://lupinepublishers.com/agriculture-journal/fulltext/evaluation-of-bread-wheat-genotypes-for-adult-plant-resistance-to-stem-rust.ID.000307.php",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-ETBW-9558",
+        "canonical_name": "ETBW-9558",
+        "raw_names_seen": [],
+        "unit_type": "breeding_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "ETBW-9558",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": "<30",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "<20",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa & Asassa",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Meets adult-plant resistance threshold (TRS<30 AND ACI<20) at both sites."
+    },
+    {
+      "ctr_id": "CTR-S9-ETBW-9559",
+      "study": {
+        "study_id": "S9",
+        "citation": "Evaluation of bread wheat genotypes for adult plant resistance to stem rust",
+        "year": "2018",
+        "sites": [
+          "Kulumsa",
+          "Asassa"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 28,
+        "source_url": "https://lupinepublishers.com/agriculture-journal/fulltext/evaluation-of-bread-wheat-genotypes-for-adult-plant-resistance-to-stem-rust.ID.000307.php",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-ETBW-9559",
+        "canonical_name": "ETBW-9559",
+        "raw_names_seen": [],
+        "unit_type": "breeding_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "ETBW-9559",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": "<30",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "<20",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa & Asassa",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Meets adult-plant resistance threshold (TRS<30 AND ACI<20) at both sites."
+    },
+    {
+      "ctr_id": "CTR-S9-ETBW-9560",
+      "study": {
+        "study_id": "S9",
+        "citation": "Evaluation of bread wheat genotypes for adult plant resistance to stem rust",
+        "year": "2018",
+        "sites": [
+          "Kulumsa",
+          "Asassa"
+        ],
+        "institution": null,
+        "design": null,
+        "n_units_screened": 28,
+        "source_url": "https://lupinepublishers.com/agriculture-journal/fulltext/evaluation-of-bread-wheat-genotypes-for-adult-plant-resistance-to-stem-rust.ID.000307.php",
+        "extraction_completeness": "abstract_only"
+      },
+      "unit": {
+        "unit_id": "U-ETBW-9560",
+        "canonical_name": "ETBW-9560",
+        "raw_names_seen": [],
+        "unit_type": "breeding_line"
+      },
+      "conditions": [
+        {
+          "condition_id": "C-variety",
+          "factor": "genotype_identity",
+          "value": "ETBW-9560",
+          "scale": "categorical"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_id": "O-TRS",
+          "construct": "rust_severity",
+          "metric": "TRS",
+          "value": "<30",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        },
+        {
+          "outcome_id": "O-ACI",
+          "construct": "rust_severity",
+          "metric": "CI",
+          "value": "<20",
+          "scale": "continuous",
+          "direction": "lower_better",
+          "timing": "point",
+          "unit_of_measure": null
+        }
+      ],
+      "context": {
+        "site": "Kulumsa & Asassa",
+        "season_year": null,
+        "pathogen": "Puccinia graminis f.sp. tritici",
+        "races_tested": [],
+        "growth_stage": "adult_plant"
+      },
+      "notes": "Meets adult-plant resistance threshold (TRS<30 AND ACI<20) at both sites."
+    }
+  ],
+  "tier_records": [
+    {
+      "tier_record_id": "TR-01",
+      "construct": "rust_severity",
+      "metric_a": "FRS_or_TRS",
+      "metric_b": "CI",
+      "tier": 2,
+      "rationale": "CI is explicitly defined (S8) as severity(%) x host-reaction constant. FRS/TRS IS the severity(%) input to that formula. So CI is a direct, documented transform of FRS/TRS given the host reaction score \u2014 convertible, not just related, provided the reaction score is also reported.",
+      "evidence_checked": [
+        "S8 abstract gives explicit formula and constants"
+      ],
+      "evaluated_by": "manual_pass_from_abstracts",
+      "reviewed_by_human": null,
+      "override_history": []
+    },
+    {
+      "tier_record_id": "TR-02",
+      "construct": "rust_severity",
+      "metric_a": "CI",
+      "metric_b": "AUDPC",
+      "tier": 3,
+      "rationale": "Both quantify rust severity but CI is a point (single-timepoint) score and AUDPC integrates severity over multiple timepoints across the season. No validated CI<->AUDPC conversion formula found in any of the 9 abstracts; every study that reports both reports them side by side, never converts one from the other.",
+      "evidence_checked": [
+        "S1, S3, S4, S6, S7, S8 all report CI/ACI and AUDPC/rAUDPC as parallel, separately-computed metrics"
+      ],
+      "evaluated_by": "manual_pass_from_abstracts",
+      "reviewed_by_human": null,
+      "override_history": []
+    },
+    {
+      "tier_record_id": "TR-03",
+      "construct": "rust_severity",
+      "metric_a": "seedling_IT",
+      "metric_b": "CI_or_AUDPC",
+      "tier": 3,
+      "rationale": "Seedling infection type is a categorical, race-specific greenhouse readout (controlled inoculation, single race per test) capturing qualitative gene-for-gene resistance. CI/AUDPC are continuous, field-stage, natural-infection readouts capturing quantitative slow-rusting resistance. Different growth stage, different scale type, different biological question (race-specific vs durable/partial resistance) \u2014 not mergeable even though both are commonly reported in the same paper about the same lines.",
+      "evidence_checked": [
+        "S2 reports only seedling IT; S6 reports both seedling IT AND field CI/FRS/rAUDPC for an overlapping cohort, never combined into one score"
+      ],
+      "evaluated_by": "manual_pass_from_abstracts",
+      "reviewed_by_human": null,
+      "override_history": []
+    },
+    {
+      "tier_record_id": "TR-04",
+      "construct": "rust_severity vs grain_yield",
+      "metric_a": "CI_or_AUDPC",
+      "metric_b": "yield_loss",
+      "tier": 4,
+      "rationale": "Different constructs entirely (disease severity vs. yield outcome), not just different operationalizations of the same construct \u2014 correctly excluded from pooling as the same metric family. Flagged as UNRELATED in the tiering sense (not mergeable as the same measurement) while still being causally interesting to report alongside each other. Notably only 1 of 9 studies (S8) reports this link at all \u2014 insufficient evidence to synthesize a severity->yield relationship across studies yet.",
+      "evidence_checked": [
+        "Only S8 links severity metrics to yield; S1-S7, S9 stop at the disease metric"
+      ],
+      "evaluated_by": "manual_pass_from_abstracts",
+      "reviewed_by_human": null,
+      "override_history": []
+    }
+  ]
+}
