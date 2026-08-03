@@ -104,11 +104,15 @@ Tables, figures, or results sections that contain actual measured values.
 Per-experiment. Soil properties, climate, baseline characterizations.
 
 ### 5. Statistical analyses
-ANOVA tables and other statistical inference results go in `statistical_analyses`.
-These are NOT primary measurements — they report F-values, p-values, and significance.
-For each statistical analysis, identify its source_id, type, and which response
-variables are tested.  The detailed extraction of values (DF, F, p) is done in a
-separate step.
+Statistical inference results go in `statistical_analyses` — these are NOT primary
+measurements; they report test statistics, p-values, and significance. This covers
+ANOVA/MANOVA/ANCOVA tables, correlation matrices, regression output, t-tests, and
+chi-square tests.  For each analysis, identify its source_id, type, and which
+response variables are tested.  The detailed extraction of values (DF, F, p) is
+done in a separate step.
+
+`type` values: `anova` | `manova` | `ancova` | `correlation` | `regression` |
+`t_test` | `chi_sq` | `other`.
 
 ### 6. Unaccounted tables
 Tables/figures that are NOT evidence sources and NOT statistical analyses.

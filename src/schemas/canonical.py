@@ -7,9 +7,9 @@ Hierarchy: Study → Experiment → EvidenceSource → Observation
   - EvidenceSource: a table/figure/section where data is reported
   - Observation: one row's worth of data from an evidence source
 
-Separate from primary observations: StatisticalAnalysis → ANOVATable → ANOVAResultRow
-  Captures statistical inference (F-values, p-values, significance) as a
-  distinct layer — these are statements about treatments, not measurements.
+Separate from primary observations: StatisticalAnalysis → StatisticTable → StatisticRow
+  Captures statistical inference (F, t, chi-sq, r, regression coefficients, etc.)
+  as a distinct layer — these are statements about treatments, not measurements.
 
 Key separation:
   - ExperimentalDimensions = what structures the observation space (varied or blocking)
@@ -20,7 +20,7 @@ Key separation:
 """
 
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Any, Optional
 
 
 @dataclass
@@ -87,38 +87,48 @@ class ExperimentContext:
 
 
 @dataclass
-class ANOVAResultRow:
-    """One row from an ANOVA table — the effect of one factor or interaction
-    on one response variable, with F-statistic and significance."""
-    source: str                    # Factor/interaction name, e.g. "Nitrogen_rate", "N_rate x P_source"
-    source_type: str               # "main_effect" | "interaction" | "error" | "total"
+class StatisticRow:
+    """One row of statistical inference — a test statistic or estimate for one
+    source (factor, interaction, contrast, or comparison) on one response variable.
+
+    The general shape holds any inference result: a statistic type + value plus
+    its significance, with optional type-specific parameters.  ANOVA-family
+    extras (sum_sq, mean_sq) are documented `params` keys for statistic_type
+    "F"; correlation uses n/df; regression uses R2, coefficients, etc.  When a
+    table reports only significance (stars/NS) with no numeric value, the value
+    and all statistic fields are None and only `significance` is populated."""
+    source: str                    # Factor/interaction/contrast name, e.g. "Nitrogen_rate", "N_rate x P_source"
+    source_type: str               # "main_effect" | "interaction" | "contrast" | "error" | "total" | "pair" | ...
+    statistic_type: Optional[str] = None   # "F" | "t" | "chi_sq" | "r" | "R2" | "slope" | "ICC" | "AIC" | "BIC" | ...
+    value: Optional[float] = None          # the statistic's value (F, t, r, slope, ...)
     df_numerator: Optional[float] = None
-    df_denominator: Optional[float] = None  # Usually the error DF
-    sum_sq: Optional[float] = None
-    mean_sq: Optional[float] = None
-    f_value: Optional[float] = None
+    df_denominator: Optional[float] = None  # Usually the error DF for F; single df for t/chi-sq lives here
     p_value: Optional[float] = None
-    significance: Optional[str] = None   # e.g. "***", "**", "*", "ns"
+    significance: Optional[str] = None     # e.g. "***", "**", "*", "ns", "NS"
+    params: dict[str, Any] = field(default_factory=dict)
+    # Type-specific parameters.  Documented keys:
+    #   statistic_type "F":  sum_sq, mean_sq   (ANOVA SS/MS columns)
+    #   statistic_type "r":  n                 (sample size)
 
 
 @dataclass
-class ANOVATable:
-    """A complete ANOVA table for one response variable."""
+class StatisticTable:
+    """A complete statistical result table for one response variable."""
     response_variable: str         # e.g. "Grain yield", "Plant height"
     unit: Optional[str] = None
-    rows: list[ANOVAResultRow] = field(default_factory=list)
+    rows: list[StatisticRow] = field(default_factory=list)
 
 
 @dataclass
 class StatisticalAnalysis:
     """Statistical inference results from one source (table/figure) in the paper.
-    Contains one or more ANOVA tables, each for a different response variable."""
+    Contains one or more statistic tables, each for a different response variable."""
     analysis_id: str
     experiment_id: str
     source_id: str                 # e.g. "Table 4"
-    analysis_type: str = "anova"   # anova | manova | ancova
+    analysis_type: str = "anova"   # anova | manova | ancova | correlation | regression | t_test | chi_sq | other
     design: Optional[str] = None
-    tables: list[ANOVATable] = field(default_factory=list)
+    tables: list[StatisticTable] = field(default_factory=list)
     notes: Optional[str] = None
 
 

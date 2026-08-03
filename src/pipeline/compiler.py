@@ -13,7 +13,7 @@ from src.schemas.extraction_record import ExtractionRecord, RawObservation
 from src.schemas.canonical import (
     Study, Subject, Experiment, ExperimentalDimension, EvidenceSource,
     ExperimentContext, Observation, MeasurementValue, CompilationResult,
-    StatisticalAnalysis, ANOVATable, ANOVAResultRow,
+    StatisticalAnalysis, StatisticTable, StatisticRow,
 )
 
 
@@ -86,6 +86,43 @@ def _infer_subject_type(name: str) -> str:
     if "variety" in raw:
         return "released_variety"
     return "unknown"
+
+
+def _stat_row_from_dict(r: dict) -> StatisticRow:
+    """Build a StatisticRow from an LLM stat-record row dict.
+
+    Tolerates both the general shape (statistic_type/value/params) and legacy
+    ANOVA-shaped records (f_value/sum_sq/mean_sq) so old cached artifacts
+    still compile.
+    """
+    if "statistic_type" in r or "value" in r:
+        return StatisticRow(
+            source=r.get("source", ""),
+            source_type=r.get("source_type", ""),
+            statistic_type=r.get("statistic_type"),
+            value=r.get("value"),
+            df_numerator=r.get("df_numerator"),
+            df_denominator=r.get("df_denominator"),
+            p_value=r.get("p_value"),
+            significance=r.get("significance"),
+            params=dict(r.get("params") or {}),
+        )
+    # Legacy ANOVA shape: f_value / sum_sq / mean_sq top-level
+    params = {}
+    for k in ("sum_sq", "mean_sq"):
+        if r.get(k) is not None:
+            params[k] = r.get(k)
+    return StatisticRow(
+        source=r.get("source", ""),
+        source_type=r.get("source_type", ""),
+        statistic_type="F" if r.get("f_value") is not None else None,
+        value=r.get("f_value"),
+        df_numerator=r.get("df_numerator"),
+        df_denominator=r.get("df_denominator"),
+        p_value=r.get("p_value"),
+        significance=r.get("significance"),
+        params=params,
+    )
 
 
 @dataclass
@@ -161,8 +198,8 @@ class Compiler:
                         analysis_id = f"SA-{eid}-{len(stat_analyses) + 1:02d}"
                         tables = []
                         for t in sr.get("tables", []):
-                            rows = [ANOVAResultRow(**r) for r in t.get("rows", [])]
-                            tables.append(ANOVATable(
+                            rows = [_stat_row_from_dict(r) for r in t.get("rows", [])]
+                            tables.append(StatisticTable(
                                 response_variable=t.get("response_variable", ""),
                                 unit=t.get("unit"),
                                 rows=rows,

@@ -171,14 +171,19 @@ for i in range(1, 11):
             for t in sa.get("tables", []):
                 for r in t.get("rows", []):
                     result_id += 1
-                    params = {}
+                    # General shape: statistic_type + value + params
+                    stat_type = r.get("statistic_type")
+                    stat_value = safe_float(r.get("value"))
+                    params = dict(r.get("params") or {})
+                    # Legacy ANOVA shape: f_value at top level
+                    if stat_type is None and r.get("f_value") is not None:
+                        stat_type = "F"
+                        stat_value = safe_float(r.get("f_value"))
                     for k in ["df_numerator", "df_denominator", "sum_sq", "mean_sq"]:
                         v = r.get(k)
                         if v is not None:
                             try: params[k] = float(v)
                             except: params[k] = v
-                    stat_type = "F" if r.get("f_value") is not None else None
-                    stat_value = safe_float(r.get("f_value"))
                     con.execute(
                         "INSERT INTO statistical_results VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                         [f"SR-{result_id:04d}", aid,

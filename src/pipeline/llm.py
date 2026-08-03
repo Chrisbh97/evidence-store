@@ -88,7 +88,7 @@ def run_extraction(paper_text: str, experiment: dict, source: dict, **kwargs) ->
 
 
 def run_statistical_extraction(paper_text: str, experiment: dict, stat_source: dict, **kwargs) -> str:
-    """Run statistical extraction prompt for an ANOVA table."""
+    """Run statistical extraction prompt for a statistical analysis table."""
     user_msg = (
         f"Full paper:\n\n{paper_text}\n\n"
         f"---\n\n"

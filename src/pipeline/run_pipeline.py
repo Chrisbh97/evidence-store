@@ -11,6 +11,7 @@ nothing except the cache via `store` and progress messages via `log`.
 """
 
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -105,7 +106,7 @@ def run_pipeline(
         raise FileNotFoundError(f"PDF not found: {pdf}")
 
     pid = paper_id or pdf.stem
-    model = model or "gpt-4o"
+    model = model or os.getenv("MODEL", "gpt-4o")
     kwargs = {"api_key": api_key, "api_base": api_base, "model": model, "timeout": timeout}
     kwargs = {k: v for k, v in kwargs.items() if v is not None}
 
