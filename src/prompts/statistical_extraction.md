@@ -159,5 +159,10 @@ F-probability rows or stars, with NO numeric columns — e.g.
    the location or block name (e.g. `"Seed yield (Rob Gebeya)"`) so the two blocks
    are distinguishable.
 
-5. Data rows (means with letters, CV %, LSD) belong to the evidence extraction,
-   NOT this statistical table — skip them here.
+5. Data rows (means with letters, CV %, LSD, SE) belong to the evidence extraction,
+    NOT this statistical table — skip them here.
+
+**Routing summary for this pipeline:**
+- Contrasts (Linear/Quadratic/Cubic) → Branch A, `source_type: "contrast"`, `statistic_type: "F"` (or "t" if printed)
+- F-probability rows (significance-only) → Branch B, `source_type: "main_effect"`/`"interaction"`, `statistic_type: "F"`, significance only
+- CV / LSD / SE rows → **NOT statistical extraction**; handled by evidence extraction as `result_type: "summary_statistic"` with `statistic: "cv"`/`"lsd"`/`"se"`
