@@ -42,6 +42,15 @@ tmp_*.txt
 inspect_*.py
 check_*.py
 review_all.py
+list_papers.py
+query_*.py
+show_cer*.py
+test.py
+
+# Binary / database files
+*.exe
+*.duckdb
+*.csv
 
 # OS
 .DS_Store
