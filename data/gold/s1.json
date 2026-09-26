@@ -1,0 +1,261 @@
+{
+  "paper": "s1",
+  "note": "Gold set curated from data/comparison/s1_pymupdf4llm_v2.md (Tables 2-4). Significance encodes the paper's own F-probability/contrast/Weeding/PxW stars. Source = Agegnehu & Fessehaie, faba bean P x weeding, Welmera + Rob Gebeya.",
+  "sources": {
+    "Table 2": {
+      "analysis_type": "anova",
+      "tables": [
+        {
+          "response_variable": "Biomass yield",
+          "location": "Welmera",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        },
+        {
+          "response_variable": "Seed yield",
+          "location": "Welmera",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        },
+        {
+          "response_variable": "Thousand grain weight",
+          "location": "Welmera",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "*"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "*"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        },
+        {
+          "response_variable": "Biomass yield",
+          "location": "Rob Gebeya",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "*"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        },
+        {
+          "response_variable": "Seed yield",
+          "location": "Rob Gebeya",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "**"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "*"}
+          ]
+        },
+        {
+          "response_variable": "Thousand seed weight",
+          "location": "Rob Gebeya",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "*"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "*"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "**"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        }
+      ]
+    },
+    "Table 3": {
+      "analysis_type": "anova",
+      "tables": [
+        {
+          "response_variable": "Plant height",
+          "location": "Welmera",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "**"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "*"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        },
+        {
+          "response_variable": "Number of pods per plant",
+          "location": "Welmera",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        },
+        {
+          "response_variable": "Seeds per pod",
+          "location": "Welmera",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "*"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "*"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "*"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "**"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        },
+        {
+          "response_variable": "Plant height",
+          "location": "Rob Gebeya",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "NS"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        },
+        {
+          "response_variable": "Number of pods per plant",
+          "location": "Rob Gebeya",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "*"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        },
+        {
+          "response_variable": "Seeds per pod",
+          "location": "Rob Gebeya",
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "**"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "*"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "**"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "NS"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        }
+      ]
+    },
+    "Table 4": {
+      "analysis_type": "anova",
+      "tables": [
+        {
+          "response_variable": "Dry matter of broad-leaf weeds at weeding (Welmera)",
+          "location": null,
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "**"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "***"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "*"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "**"}
+          ]
+        },
+        {
+          "response_variable": "Dry matter of broad-leaf weeds at harvesting (Welmera)",
+          "location": null,
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "***"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "***"}
+          ]
+        },
+        {
+          "response_variable": "Dry matter of grass weeds at weeding (Welmera)",
+          "location": null,
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "**"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "***"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "*"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        },
+        {
+          "response_variable": "Dry matter of grass weeds at harvesting (Welmera)",
+          "location": null,
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "***"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "**"}
+          ]
+        },
+        {
+          "response_variable": "Dry matter of broad-leaf weeds at weeding (Rob Gebeya)",
+          "location": null,
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "**"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "NS"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        },
+        {
+          "response_variable": "Dry matter of broad-leaf weeds at harvesting (Rob Gebeya)",
+          "location": null,
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "**"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "**"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "NS"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "***"}
+          ]
+        },
+        {
+          "response_variable": "Dry matter of grass weeds at weeding (Rob Gebeya)",
+          "location": null,
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "**"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "***"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "NS"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "*"}
+          ]
+        },
+        {
+          "response_variable": "Dry matter of grass weeds at harvesting (Rob Gebeya)",
+          "location": null,
+          "rows": [
+            {"source": "Phosphorus_rate", "source_type": "main_effect", "significance": "**"},
+            {"source": "Phosphorus_rate: Linear", "source_type": "contrast", "significance": "NS"},
+            {"source": "Phosphorus_rate: Quadratic", "source_type": "contrast", "significance": "**"},
+            {"source": "Phosphorus_rate: Cubic", "source_type": "contrast", "significance": "NS"},
+            {"source": "Weeding", "source_type": "main_effect", "significance": "***"},
+            {"source": "Phosphorus_rate x Weeding", "source_type": "interaction", "significance": "NS"}
+          ]
+        }
+      ]
+    }
+  }
+}
