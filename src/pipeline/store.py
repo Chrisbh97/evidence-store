@@ -78,9 +78,9 @@ def text_hash(text: str) -> str:
 # ---------------------------------------------------------------------------
 
 
-def artifact_key(text_hash: str, prompt_name: str, model: str) -> str:
-    """Cache identity of an LLM stage: (text, prompt content, model)."""
-    return _sha(f"{text_hash}|{prompt_name}|{prompt_hash(prompt_name)}|{model}", n=12)
+def artifact_key(text_hash: str, prompt_name: str, model: str, group_id: str = "") -> str:
+    """Cache identity of an LLM stage: (text, prompt content, model, group_id)."""
+    return _sha(f"{text_hash}|{prompt_name}|{prompt_hash(prompt_name)}|{model}|{group_id}", n=12)
 
 
 def prompt_hash(name: str) -> str:
@@ -114,9 +114,10 @@ def discovery_path(paper_id: str, key: str) -> Path:
     return STAGING_ROOT / paper_id / "discovery" / f"{key}.json"
 
 
-def source_path(paper_id: str, exp_id: str, source_id: str, key: str) -> Path:
+def source_path(paper_id: str, exp_id: str, source_id: str, group_id: str, key: str) -> Path:
     safe_src = source_id.replace("/", "_").replace(" ", "_")
-    return STAGING_ROOT / paper_id / "sources" / f"{exp_id}__{safe_src}__{key}.json"
+    safe_grp = group_id.replace("/", "_").replace(" ", "_")
+    return STAGING_ROOT / paper_id / "sources" / f"{exp_id}__{safe_src}__{safe_grp}__{key}.json"
 
 
 def stat_path(paper_id: str, exp_id: str, source_id: str, key: str) -> Path:
@@ -152,18 +153,18 @@ def save_discovery(paper_id: str, text_hash: str, model: str, raw: str, parsed: 
     _save(discovery_path(paper_id, key), meta, {"raw": raw, "parsed": parsed})
 
 
-def load_source(paper_id: str, exp_id: str, source_id: str, text_hash: str, model: str) -> Optional[dict]:
+def load_source(paper_id: str, exp_id: str, source_id: str, group_id: str, text_hash: str, model: str) -> Optional[dict]:
     """Return cached extraction record if inputs unchanged, else None."""
-    key = artifact_key(text_hash, "extraction", model)
-    art = _load(source_path(paper_id, exp_id, source_id, key))
+    key = artifact_key(text_hash, "extraction", model, group_id)
+    art = _load(source_path(paper_id, exp_id, source_id, group_id, key))
     return art["data"] if art else None
 
 
-def save_source(paper_id: str, exp_id: str, source_id: str, text_hash: str, model: str, record: Any) -> None:
-    key = artifact_key(text_hash, "extraction", model)
+def save_source(paper_id: str, exp_id: str, source_id: str, group_id: str, text_hash: str, model: str, record: Any) -> None:
+    key = artifact_key(text_hash, "extraction", model, group_id)
     meta = _metadata(paper_id, "extraction", text_hash, "extraction", model,
-                     experiment_id=exp_id, source_id=source_id)
-    _save(source_path(paper_id, exp_id, source_id, key), meta, record)
+                     experiment_id=exp_id, source_id=source_id, group_id=group_id)
+    _save(source_path(paper_id, exp_id, source_id, group_id, key), meta, record)
 
 
 def load_stat(paper_id: str, exp_id: str, source_id: str, text_hash: str, model: str) -> Optional[dict]:
@@ -179,8 +180,8 @@ def save_stat(paper_id: str, exp_id: str, source_id: str, text_hash: str, model:
     _save(stat_path(paper_id, exp_id, source_id, key), meta, record)
 
 
-def has_source(paper_id: str, exp_id: str, source_id: str, text_hash: str, model: str) -> bool:
-    return load_source(paper_id, exp_id, source_id, text_hash, model) is not None
+def has_source(paper_id: str, exp_id: str, source_id: str, group_id: str, text_hash: str, model: str) -> bool:
+    return load_source(paper_id, exp_id, source_id, group_id, text_hash, model) is not None
 
 
 def has_stat(paper_id: str, exp_id: str, source_id: str, text_hash: str, model: str) -> bool:

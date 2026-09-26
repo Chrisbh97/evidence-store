@@ -70,12 +70,13 @@ def _extract_and_filter(
 
 
 def _flatten_experiments(discovery_data: dict) -> tuple:
-    """Return ([(exp, source)], [(exp, stat_source)]) flattened from discovery."""
+    """Return ([(exp, source, row_group)], [(exp, stat_source)]) flattened from discovery."""
     all_sources = []
     all_stats = []
     for exp in discovery_data.get("experiments", []):
         for src in exp.get("evidence_sources", []):
-            all_sources.append((exp, src))
+            for rg in src.get("row_groups", []):
+                all_sources.append((exp, src, rg))
         for sa in exp.get("statistical_analyses", []):
             all_stats.append((exp, sa))
     return all_sources, all_stats
@@ -134,24 +135,24 @@ def run_pipeline(
 
     all_sources, all_stats = _flatten_experiments(discovery_data)
 
-    # --- Per-source extraction stage (cached) ---
+    # --- Per-row-group extraction stage (cached) ---
     records = []
     calls = 0
-    for i, (exp, src) in enumerate(all_sources):
-        cached = store.load_source(pid, exp["experiment_id"], src["source_id"], thash, model)
+    for i, (exp, src, rg) in enumerate(all_sources):
+        cached = store.load_source(pid, exp["experiment_id"], src["source_id"], rg["group_id"], thash, model)
         if cached is not None:
             records.append(dict_to_er(cached))
-            log(f"  [{i+1}/{len(all_sources)}] {exp['experiment_id']} / {src['source_id']} — cached")
+            log(f"  [{i+1}/{len(all_sources)}] {exp['experiment_id']} / {src['source_id']} / {rg['group_id']} — cached")
             continue
         if calls > 0 and delay > 0:
             log(f"  Waiting {delay}s...")
             time.sleep(delay)
-        log(f"  [{i+1}/{len(all_sources)}] Extracting {exp['experiment_id']} / {src['source_id']}...")
+        log(f"  [{i+1}/{len(all_sources)}] Extracting {exp['experiment_id']} / {src['source_id']} / {rg['group_id']}...")
         try:
-            raw = run_extraction(paper_text, exp, src, **kwargs)
-            er = parse_extraction_json_to_er(raw, exp["experiment_id"], src["source_id"])
+            raw = run_extraction(paper_text, exp, src, rg, **kwargs)
+            er = parse_extraction_json_to_er(raw, exp["experiment_id"], src["source_id"], rg["group_id"])
             records.append(er)
-            store.save_source(pid, exp["experiment_id"], src["source_id"], thash, model, er_to_dict(er))
+            store.save_source(pid, exp["experiment_id"], src["source_id"], rg["group_id"], thash, model, er_to_dict(er))
             calls += 1
         except KeyboardInterrupt:
             log("\nInterrupted. Progress saved to cache.")
