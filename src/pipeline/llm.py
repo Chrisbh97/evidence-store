@@ -75,14 +75,23 @@ def run_discovery(paper_text: str, **kwargs) -> str:
     return call_llm(discovery, f"Full paper:\n\n{paper_text}", **kwargs)
 
 
-def run_extraction(paper_text: str, experiment: dict, source: dict, **kwargs) -> str:
-    """Run extraction prompt for one evidence source. Returns raw JSON text."""
+def run_extraction(paper_text: str, experiment: dict, source: dict, row_group: dict, **kwargs) -> str:
+    """Run extraction prompt for ONE row_group within one evidence source.
+    
+    Returns raw JSON text. Called once per row_group — a source with multiple
+    row_groups (e.g. a table with separate single-factor breakdown blocks)
+    requires multiple calls, each scoped to just that group's grain.
+    """
     user_msg = (
         f"Full paper:\n\n{paper_text}\n\n"
         f"---\n\n"
         f"Experiment: {experiment.get('label', '')}\n"
         f"Source: {source['source_id']}\n"
-        f"Observation grain: {source.get('observation_grain', [])}\n"
+        f"Row group: {row_group['group_id']}\n"
+        f"Factors that vary in this group: {row_group.get('varies', [])}\n"
+        f"Factors marginalized over (not stated per-row, averaged over all levels): {row_group.get('marginal_over', [])}\n"
+        f"Result type: {row_group.get('result_type', 'treatment_combination')}\n"
+        f"Row labels in this group: {row_group.get('row_labels', [])}\n"
     )
     return call_llm(extraction, user_msg, **kwargs)
 
