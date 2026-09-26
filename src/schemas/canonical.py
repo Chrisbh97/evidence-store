@@ -20,7 +20,7 @@ Key separation:
 """
 
 from dataclasses import dataclass, field
-from typing import Any, Optional
+from typing import Any, Optional, Literal
 
 
 @dataclass
@@ -46,6 +46,14 @@ class Subject:
 
 
 @dataclass
+class DimensionLevel:
+    """A canonical level for a factor with stable ID and human-readable label."""
+    id: str                    # stable short code, e.g. "P0", "P10", "W1", "W2"
+    label: str                 # human-readable label, e.g. "0 kg/ha", "Unweeded"
+    description: str = ""      # full description from paper
+
+
+@dataclass
 class ExperimentalDimension:
     """A dimension structuring the observation space of an experiment.
 
@@ -53,22 +61,30 @@ class ExperimentalDimension:
     varied (manipulated) from those that merely partition the data
     (stratification — soil type, multi-site location, multi-year season).
     This moves the model from descriptive (what was measured) to
-    experimental (what was inferred).
-    """
-    name: str                  # canonical key, e.g. "Nitrogen_rate", "Variety"
-    levels: list[str] = field(default_factory=list)
-    role: str = "unknown"      # manipulated | stratification | unknown
+    experimental (what was inferred)."""
+    name: str                          # canonical key, e.g. "Nitrogen_rate", "Variety"
+    levels: list[DimensionLevel] = field(default_factory=list)
+    role: str = "unknown"              # manipulated | stratification | unknown
+
+
+@dataclass
+class RowGroup:
+    """A homogeneous block within an evidence source where all rows share the same grain."""
+    group_id: str
+    varies: list[str] = field(default_factory=list)
+    marginal_over: list[str] = field(default_factory=list)
+    result_type: Literal["treatment_combination", "marginal_value", "statistical_test", "summary_statistic"] = "treatment_combination"
+    row_labels: list[str] = field(default_factory=list)  # for provenance
 
 
 @dataclass
 class EvidenceSource:
     """A location in the paper where observations are reported.
-    Each source has an observation grain — the set of factors whose levels
-    define one row of the source."""
+    Sources may contain multiple row_groups with different grains."""
     source_id: str             # e.g. "Table 3", "Figure 2", "Results paragraph 5"
     type: str = "table"        # table | figure | section | supplementary
     purpose: str = "primary"   # primary | descriptive | anova | weather | economics | correlation | pedigree | other
-    observation_grain: list[str] = field(default_factory=list)
+    row_groups: list[RowGroup] = field(default_factory=list)  # REPLACES observation_grain
     page_number: Optional[int] = None  # PDF page number, set deterministically post-extraction
 
 
@@ -153,8 +169,7 @@ class MeasurementValue:
     computed_value: Optional[float] = None
     significance_letter: Optional[str] = None
     unit: Optional[str] = None
-    statistic: str = "mean"              # mean | lsd | cv | se | sd | p_value | range | median | other | none
-    direction: str = "lower_better"       # lower_better | higher_better | n/a
+    statistic: Literal["mean", "lsd", "cv", "se", "sd", "p_value", "range", "median", "other", "none"] = "mean"
 
 
 @dataclass
@@ -165,6 +180,8 @@ class Observation:
     source_id: str
     factor_values: dict[str, str] = field(default_factory=dict)
     # e.g. {"Nitrogen_rate": "92", "Variety": "Kubsa", "Location": "Kulumsa"}
+    marginal_over: list[str] = field(default_factory=list)      # factors averaged over
+    result_type: Literal["treatment_combination", "marginal_value", "statistical_test", "summary_statistic"] = "treatment_combination"
     measurements: list[MeasurementValue] = field(default_factory=list)
     provenance: Optional[str] = None      # e.g. "Table 3, row 4"
     confidence: str = "unstated"

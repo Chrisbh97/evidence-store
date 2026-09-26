@@ -28,6 +28,8 @@ class RawMeasurement:
 class RawObservation:
     """One row of data from one evidence source."""
     factor_values: dict[str, str] = field(default_factory=dict)
+    marginal_over: list[str] = field(default_factory=list)
+    result_type: str = "treatment_combination"
     measurements: list[RawMeasurement] = field(default_factory=list)
     provenance: Optional[str] = None
     confidence: str = "unstated"
