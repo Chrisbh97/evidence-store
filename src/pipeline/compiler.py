@@ -11,7 +11,7 @@ from typing import Optional
 
 from src.schemas.extraction_record import ExtractionRecord, RawObservation
 from src.schemas.canonical import (
-    Study, Subject, Experiment, ExperimentalDimension, EvidenceSource,
+    Study, Subject, Experiment, ExperimentalDimension, DimensionLevel, RowGroup, EvidenceSource,
     ExperimentContext, Observation, MeasurementValue, CompilationResult,
     StatisticalAnalysis, StatisticTable, StatisticRow,
 )
@@ -165,19 +165,44 @@ class Compiler:
 
             dimensions = []
             for f in ed.get("dimensions", ed.get("experimental_factors", ed.get("factors", []))):
+                levels = []
+                for lvl in f.get("levels", []):
+                    if isinstance(lvl, dict):
+                        levels.append(DimensionLevel(
+                            id=lvl.get("id", ""),
+                            label=lvl.get("label", ""),
+                            description=lvl.get("description", ""),
+                        ))
+                    else:
+                        # Legacy: string level
+                        levels.append(DimensionLevel(
+                            id=str(lvl),
+                            label=str(lvl),
+                            description="",
+                        ))
                 dimensions.append(ExperimentalDimension(
                     name=f["name"],
-                    levels=f.get("levels", []),
+                    levels=levels,
                     role=f.get("role", "unknown"),
                 ))
 
             sources = []
             for s in ed.get("evidence_sources", []):
+                row_groups = []
+                for rg in s.get("row_groups", []):
+                    row_groups.append(RowGroup(
+                        group_id=rg.get("group_id", ""),
+                        varies=rg.get("varies", []),
+                        marginal_over=rg.get("marginal_over", []),
+                        result_type=rg.get("result_type", "treatment_combination"),
+                        row_labels=rg.get("row_labels", []),
+                    ))
                 sources.append(EvidenceSource(
                     source_id=s.get("source_id", ""),
                     type=s.get("type", "table"),
                     purpose=s.get("purpose", "primary"),
-                    observation_grain=s.get("observation_grain", []),
+                    row_groups=row_groups,
+                    page_number=s.get("page_number"),
                 ))
 
             # --- Statistical analyses ---
@@ -244,6 +269,8 @@ class Compiler:
                     experiment_id=exp_id,
                     source_id=src_id,
                     factor_values=dict(ro.factor_values),
+                    marginal_over=list(ro.marginal_over),
+                    result_type=ro.result_type,
                     provenance=ro.provenance,
                     confidence=ro.confidence,
                 )

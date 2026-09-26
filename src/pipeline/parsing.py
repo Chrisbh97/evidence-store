@@ -81,7 +81,7 @@ def _extract_json_block(text: str) -> str:
     raise ValueError(f"No valid JSON found in response. First 200 chars: {text[:200]}")
 
 
-def parse_extraction_json_to_er(raw_text: str, experiment_id: str, source_id: str) -> ExtractionRecord:
+def parse_extraction_json_to_er(raw_text: str, experiment_id: str, source_id: str, group_id: str = "") -> ExtractionRecord:
     """Parse extraction JSON output into an ExtractionRecord."""
     cleaned = _extract_json_block(raw_text)
     data = json.loads(cleaned)
@@ -111,6 +111,8 @@ def parse_extraction_json_to_er(raw_text: str, experiment_id: str, source_id: st
             ))
         observations.append(RawObservation(
             factor_values={k: str(v) for k, v in fv.items()},
+            marginal_over=o.get("marginal_over", []),
+            result_type=o.get("result_type", "treatment_combination"),
             measurements=ms,
             provenance=o.get("provenance"),
             confidence=o.get("confidence", "unstated"),
@@ -131,6 +133,8 @@ def er_to_dict(er: ExtractionRecord) -> dict:
         "observations": [
             {
                 "factor_values": dict(o.factor_values),
+                "marginal_over": list(o.marginal_over),
+                "result_type": o.result_type,
                 "measurements": [
                     {
                         "metric_raw": m.metric_raw,
@@ -159,6 +163,8 @@ def dict_to_er(data: dict) -> ExtractionRecord:
         observations=[
             RawObservation(
                 factor_values=dict(o.get("factor_values", {})),
+                marginal_over=list(o.get("marginal_over", [])),
+                result_type=o.get("result_type", "treatment_combination"),
                 measurements=[
                     RawMeasurement(**m) for m in o.get("measurements", [])
                 ],
