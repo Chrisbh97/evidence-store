@@ -96,17 +96,12 @@ def validate_measurement_value(mv: 'MeasurementValue') -> list[str]:
 def validate_observation(obs: Observation, experiment_dimensions: list) -> list[str]:
     """Run all observation-level validations."""
     errors = []
-    # Handle both dict and object dimensions
-    design_factor_names = []
-    for d in experiment_dimensions:
-        if isinstance(d, dict):
-            design_factor_names.append(d.get("name"))
-        else:
-            design_factor_names.append(d.name)
-    
-    errors = []
+    # Only validate factors that structure the observation space (multi-level)
+    multi_level_dims = [d for d in experiment_dimensions if len(d.get('levels', [])) > 1]
+    design_factor_names = [d.get('name') for d in multi_level_dims]
+
     errors.extend(validate_observation_factor_completeness(obs, design_factor_names))
-    errors.extend(validate_factor_ids(obs, experiment_dimensions))
+    errors.extend(validate_factor_ids(obs, multi_level_dims))
     errors.extend(validate_result_type_consistency(obs))
     for mv in obs.measurements:
         errors.extend(validate_measurement_value(mv))

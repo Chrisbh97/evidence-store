@@ -9,6 +9,9 @@ Return ONLY valid JSON. No preamble, no explanation, no markdown fences.
 ```json
 {
   "study_purpose": "Brief summary of the paper's objective",
+  "subjects": [
+    {"name": "Wheat", "type": "crop"}
+  ],
   "unaccounted_tables": [
     "List any tables/figures that are NOT evidence sources for any experiment. Explain why each is excluded."
   ],
@@ -16,6 +19,7 @@ Return ONLY valid JSON. No preamble, no explanation, no markdown fences.
     {
       "experiment_id": "E-1",
       "label": "Short descriptive label",
+      "subject": {"name": "Wheat", "type": "crop"},
       "purpose": "Objective of this experiment",
       "design": "Experimental design (e.g. RCBD, CRD, split-plot)",
       "location": "Where conducted (site, region, country)",

@@ -24,6 +24,16 @@ from typing import Any, Optional, Literal
 
 
 @dataclass
+class Subject:
+    """A canonical entity — crop, variety, genotype, etc.
+    Shared for cross-paper resolution."""
+    subject_id: str
+    canonical_name: str
+    subject_type: str          # crop | released_variety | advanced_line | check | farm | unknown
+    aliases: list[str] = field(default_factory=list)
+
+
+@dataclass
 class Study:
     """A study (paper) that contains one or more experiments."""
     study_id: str
@@ -32,17 +42,7 @@ class Study:
     source_url: Optional[str] = None
     extraction_completeness: str = "full_text"
     unaccounted_tables: list[str] = field(default_factory=list)
-
-
-@dataclass
-class Subject:
-    """A canonical entity — genotype, variety, farm, sample type, etc.
-    Derived from factor values by the compiler.
-    Shared for cross-paper resolution."""
-    subject_id: str
-    canonical_name: str
-    subject_type: str          # crop | released_variety | advanced_line | check | farm | unknown
-    aliases: list[str] = field(default_factory=list)
+    subjects: list[Subject] = field(default_factory=list)
 
 
 @dataclass
@@ -154,6 +154,7 @@ class Experiment:
     experiment_id: str
     study_id: str
     label: str
+    subject: Optional[Subject] = None
     context: ExperimentContext = field(default_factory=ExperimentContext)
     dimensions: list[ExperimentalDimension] = field(default_factory=list)
     evidence_sources: list[EvidenceSource] = field(default_factory=list)

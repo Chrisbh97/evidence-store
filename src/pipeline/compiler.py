@@ -254,8 +254,6 @@ class Compiler:
 
         # --- Observations ---
         observations: dict[str, Observation] = {}
-        subjects: dict[str, Subject] = {}
-        subject_by_name: dict[str, str] = {}
 
         obs_counter = 0
         for er in records:
@@ -268,7 +266,7 @@ class Compiler:
                 marginal_over = list(ro.marginal_over)
                 if ro.result_type == "treatment_combination":
                     marginal_over = []
-                
+
                 obs = Observation(
                     observation_id=oid,
                     experiment_id=exp_id,
@@ -295,23 +293,6 @@ class Compiler:
                     ))
                 observations[oid] = obs
 
-                # Derive subjects from factor values
-                for fname, fval in ro.factor_values.items():
-                    fn = fname.strip().lower()
-                    if fn in ("variety", "genotype", "cultivar", "crop", "species", "subject"):
-                        raw = fval.strip()
-                        if raw:
-                            key = raw.lower()
-                            if key not in subject_by_name:
-                                subj_id = f"SUBJ-{len(subjects) + 1:04d}"
-                                subjects[subj_id] = Subject(
-                                    subject_id=subj_id,
-                                    canonical_name=raw,
-                                    subject_type=_infer_subject_type(raw),
-                                )
-                                subject_by_name[key] = subj_id
-
         result.observations = list(observations.values())
-        result.subjects = list(subjects.values())
 
         return result
