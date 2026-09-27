@@ -85,23 +85,65 @@ def validate_result_type_consistency(obs: Observation) -> list[str]:
 def validate_measurement_value(mv: 'MeasurementValue') -> list[str]:
     """Validate a single measurement value."""
     errors = []
-    # Allow null values for mean statistic (empty table cells)
-    if mv.statistic == "mean" and mv.computed_value is None and mv.value_raw is None:
-        pass  # Empty cell is valid
-    elif mv.statistic == "mean" and mv.computed_value is None:
-        errors.append(f"Mean statistic requires computed_value or value_raw")
+    # Allow null computed_value for mean statistic when:
+    # - value_raw is None (empty cell), OR
+    # - value_raw is non-numeric (categorical value like "Clay")
+    if mv.statistic == "mean" and mv.computed_value is None:
+        if mv.value_raw is not None:
+            try:
+                float(str(mv.value_raw).strip())
+            except (ValueError, TypeError):
+                pass  # Non-numeric value (categorical) is valid
+            else:
+                errors.append("Mean statistic requires computed_value for numeric value_raw")
     return errors
 
 
-def validate_observation(obs: Observation, experiment_dimensions: list) -> list[str]:
-    """Run all observation-level validations."""
+def validate_observation(obs: Observation, experiment_dimensions: list, row_group: dict = None) -> list[str]:
+    """Run all observation-level validations.
+    
+    If row_group is provided, only validate factors in the row_group's varies/marginal_over.
+    Otherwise, validate against all multi-level design factors.
+    """
     errors = []
-    # Only validate factors that structure the observation space (multi-level)
-    multi_level_dims = [d for d in experiment_dimensions if len(d.get('levels', [])) > 1]
-    design_factor_names = [d.get('name') for d in multi_level_dims]
-
-    errors.extend(validate_observation_factor_completeness(obs, design_factor_names))
-    errors.extend(validate_factor_ids(obs, multi_level_dims))
+    
+    if row_group:
+        # Only validate factors relevant to this row_group
+        varies = row_group.get('varies', [])
+        marginal_over = row_group.get('marginal_over', [])
+        
+        # Check that factor_values match varies
+        present = set(obs.factor_values.keys())
+        expected = set(varies)
+        if present != expected:
+            errors.append(f"factor_values keys {present} != varies {expected}")
+        
+        # Check that marginal_over matches
+        if set(obs.marginal_over) != set(marginal_over):
+            errors.append(f"marginal_over {set(obs.marginal_over)} != expected {set(marginal_over)}")
+        
+        # Validate factor IDs for varies factors
+        level_ids = {}
+        for d in experiment_dimensions:
+            if isinstance(d, dict):
+                fname = d.get('name')
+                if fname in varies:
+                    levels = d.get('levels', [])
+                    level_ids[fname] = {l.get('id') if isinstance(l, dict) else l for l in levels}
+            else:
+                if d.name in varies:
+                    level_ids[d.name] = {l.id for l in d.levels}
+        
+        for fname, fval in obs.factor_values.items():
+            if fname in level_ids and fval not in level_ids[fname]:
+                errors.append(f"Invalid level ID '{fval}' for factor {fname}. Valid: {sorted(level_ids[fname])}")
+    else:
+        # Validate against all multi-level design factors
+        multi_level_dims = [d for d in experiment_dimensions if len(d.get('levels', [])) > 1]
+        design_factor_names = [d.get('name') for d in multi_level_dims]
+        errors.extend(validate_observation_factor_completeness(obs, design_factor_names))
+        errors.extend(validate_factor_ids(obs, multi_level_dims))
+    
     errors.extend(validate_result_type_consistency(obs))
     for mv in obs.measurements:
         errors.extend(validate_measurement_value(mv))
@@ -149,15 +191,27 @@ def validate_cer_compilation(compilation_result, discovery_data: dict) -> dict:
     for exp in discovery_data.get("experiments", []):
         exp_dims[exp["experiment_id"]] = [d for d in exp.get("dimensions", [])]
     
-    # Build design factors per experiment
-    design_factors = {}
-    for exp_id, dims in exp_dims.items():
-        design_factors[exp_id] = [d["name"] for d in dims if d.get("role") in ("manipulated", "stratification")]
+    # Build row_group lookup: (experiment_id, source_id) -> list of row_groups
+    row_group_map = {}
+    for exp in discovery_data.get("experiments", []):
+        exp_id = exp["experiment_id"]
+        for src in exp.get("evidence_sources", []):
+            src_id = src.get("source_id")
+            row_group_map[(exp_id, src_id)] = src.get("row_groups", [])
     
     for obs in compilation_result.observations:
         exp_id = obs.experiment_id
-        if exp_id in design_factors:
-            obs_errors = validate_observation(obs, exp_dims.get(exp_id, []))
+        src_id = obs.source_id
+        if exp_id in exp_dims:
+            # Find the row_group that matches this observation's factor_values
+            row_groups = row_group_map.get((exp_id, src_id), [])
+            matching_rg = None
+            for rg in row_groups:
+                if set(rg.get('varies', [])) == set(obs.factor_values.keys()):
+                    matching_rg = rg
+                    break
+            
+            obs_errors = validate_observation(obs, exp_dims.get(exp_id, []), matching_rg)
             if obs_errors:
                 errors.append(f"{obs.observation_id}: {', '.join(obs_errors)}")
     

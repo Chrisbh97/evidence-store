@@ -44,7 +44,7 @@ Return ONLY valid JSON. No preamble, no markdown fences, no explanation.
 ### 1. Row group grain
 You will be given ONE row_group at a time, with its `varies` and `marginal_over` lists.
 Populate `factor_values` with ONLY the factors in `varies`, using the **stable IDs** (not labels) exactly as they appear for that row.
-Copy `marginal_over` from the row_group unchanged into every observation it produces.
+Copy `marginal_over` from the row_group **unchanged and exactly** into every observation it produces — same factors, same order. Never leave it empty when the row_group specifies it.
 Set `result_type` per observation (copied from row_group).
 **result_type rules:**
 - `treatment_combination`: ALL factors have values → `marginal_over` MUST be `[]`

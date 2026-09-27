@@ -254,6 +254,11 @@ class Compiler:
 
         # --- Observations ---
         observations: dict[str, Observation] = {}
+        row_group_map = {}
+        for ed in discovery_json.get("experiments", []):
+            eid = ed.get("experiment_id", "")
+            for src in ed.get("evidence_sources", []):
+                row_group_map[(eid, src.get("source_id", ""))] = src.get("row_groups", [])
 
         obs_counter = 0
         for er in records:
@@ -262,10 +267,16 @@ class Compiler:
             for ro in er.observations:
                 obs_counter += 1
                 oid = f"O-{obs_counter:04d}"
-                # Enforce invariant: treatment_combination must have empty marginal_over
                 marginal_over = list(ro.marginal_over)
                 if ro.result_type == "treatment_combination":
                     marginal_over = []
+                if not marginal_over:
+                    for rg in row_group_map.get((exp_id, src_id), []):
+                        if set(rg.get("varies", [])) == set(ro.factor_values.keys()):
+                            marginal_over = list(rg.get("marginal_over", []))
+                            if marginal_over:
+                                ro.result_type = "marginal_value"
+                            break
 
                 obs = Observation(
                     observation_id=oid,
