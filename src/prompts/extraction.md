@@ -46,6 +46,11 @@ You will be given ONE row_group at a time, with its `varies` and `marginal_over`
 Populate `factor_values` with ONLY the factors in `varies`, using the **stable IDs** (not labels) exactly as they appear for that row.
 Copy `marginal_over` from the row_group unchanged into every observation it produces.
 Set `result_type` per observation (copied from row_group).
+**result_type rules:**
+- `treatment_combination`: ALL factors have values → `marginal_over` MUST be `[]`
+- `marginal_value`: some factors averaged over → `marginal_over` MUST list them
+- `statistical_test`: hypothesis test rows → `marginal_over` lists factors not stated per row
+- `summary_statistic`: CV/LSD/SE → `marginal_over` lists factors not stated per row
 
 **Never** populate a factor that is not in `varies` for this row_group — a factor not stated for this row is unstated, not guessable.
 If a source has multiple row_groups, you will receive this instruction once per group; do not extract a table's other block while processing one group.
@@ -65,8 +70,9 @@ If you cannot determine a factor value from the given rows, set `confidence: "lo
 If the row_group has 10 rows, return 10 observations. Each with unique `factor_values`.
 
 ### 3. factor_values — use stable IDs
-Use the **stable IDs** from the factor definitions (e.g., "N46", "W1", "P0", "L1"), NOT the labels.
+Use the **stable IDs** from the FACTOR DEFINITIONS section above (e.g., "N46", "W1", "P0", "L1"), NOT the labels.
 Example: if the paper writes "46 kg/ha" and the factor definition has `{"id": "N46", "label": "46 kg/ha"}`, use `"N46"`.
+The FACTOR DEFINITIONS section maps each ID to its label — use this mapping to match paper values to IDs.
 
 ### 4. measurements
 Extract ALL numeric or categorical values reported for this observation. Every column of the table.

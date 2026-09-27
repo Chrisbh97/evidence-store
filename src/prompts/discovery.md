@@ -125,10 +125,16 @@ A source has a single grain only if every row states a value for the same set of
 Many tables instead present **separate blocks**, each varying a different subset of the design's factors.
 
 **Detect row groups by factor coverage, not visual formatting:**
-For each row in the source, check which manipulated factors from the design have explicit values written in that row.
+For each row in the source, check which factors from the design have explicit values written in that row.
 Group consecutive rows that share the IDENTICAL set of stated factors.
 Do NOT rely on visual sub-headings, blank rows, or formatting — these are often lost in text extraction.
-Instead, check: which manipulated factors from the design have explicit values in this row?
+Instead, check: which factors from the design have explicit values in this row?
+
+**Stratification factors in row_groups:**
+If a table has columns for different locations/sites (e.g., `| Welmera | Rob Gebeya |`), include Location in `varies`. Stratification factors that structure the table's columns must be in `varies`, not just `marginal_over`. A stratification factor is "present" in a row group if the table has separate columns or sections for its levels.
+
+**Combined/Pooled levels:**
+If the paper reports results combined across locations (e.g., "Combined", "Pooled", "Across locations", "Mean of sites"), add this as a level to the Location dimension. Example: `{"id": "L9", "label": "Combined", "description": "Combined across Gerba and Woyramba"}`. These combined rows are NOT marginal values — they are reported treatment means.
 
 **For each row group, output:**
 - `group_id`: snake_case identifier (e.g., "P_main", "P_contrasts", "W_main", "CV", "cells")

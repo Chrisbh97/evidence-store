@@ -85,9 +85,11 @@ def validate_result_type_consistency(obs: Observation) -> list[str]:
 def validate_measurement_value(mv: 'MeasurementValue') -> list[str]:
     """Validate a single measurement value."""
     errors = []
-    if mv.statistic == "mean" and mv.computed_value is None:
-        if mv.value_raw is None:
-            errors.append(f"Mean statistic requires computed_value or value_raw")
+    # Allow null values for mean statistic (empty table cells)
+    if mv.statistic == "mean" and mv.computed_value is None and mv.value_raw is None:
+        pass  # Empty cell is valid
+    elif mv.statistic == "mean" and mv.computed_value is None:
+        errors.append(f"Mean statistic requires computed_value or value_raw")
     return errors
 
 

@@ -264,12 +264,17 @@ class Compiler:
             for ro in er.observations:
                 obs_counter += 1
                 oid = f"O-{obs_counter:04d}"
+                # Enforce invariant: treatment_combination must have empty marginal_over
+                marginal_over = list(ro.marginal_over)
+                if ro.result_type == "treatment_combination":
+                    marginal_over = []
+                
                 obs = Observation(
                     observation_id=oid,
                     experiment_id=exp_id,
                     source_id=src_id,
                     factor_values=dict(ro.factor_values),
-                    marginal_over=list(ro.marginal_over),
+                    marginal_over=marginal_over,
                     result_type=ro.result_type,
                     provenance=ro.provenance,
                     confidence=ro.confidence,
