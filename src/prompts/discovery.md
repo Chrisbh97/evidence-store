@@ -150,8 +150,8 @@ If the paper reports results combined across locations (e.g., "Combined", "Poole
   - For marginal_value: list of averaged-over factors
   - For statistical_test / summary_statistic: list of factors not stated per row
 - `result_type`: one of:
-  - `"treatment_combination"` — all manipulated factors have values (full factorial cells)
-  - `"marginal_value"` — subset of manipulated factors (main effects, averaged over others)
+  - `"treatment_combination"` — ALL factors (manipulated AND stratification) have values. `marginal_over` MUST be empty.
+  - `"marginal_value"` — one or more factors (manipulated or stratification) are averaged over. `marginal_over` MUST list them.
   - `"statistical_test"` — hypothesis test rows (F-probability, contrasts, t-tests)
   - `"summary_statistic"` — CV, LSD, SE, descriptive rows
 - `row_labels`: the row labels as they appear in the paper (for provenance)
