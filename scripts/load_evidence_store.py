@@ -1,15 +1,23 @@
 """
-Load all v3 CERs into DuckDB with the new schema.
+Load CERs into DuckDB with versioned schema.
+
+Usage:
+    python scripts/load_evidence_store.py --db v4
+    python scripts/load_evidence_store.py --db v3  # legacy
 """
 
-import json, sys, os
+import json, sys, os, argparse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import duckdb
 
-DB_PATH = Path("data/evidence_store_v3.duckdb")
+parser = argparse.ArgumentParser()
+parser.add_argument("--db", choices=["v3", "v4"], default="v4")
+args = parser.parse_args()
+
+DB_PATH = Path(f"data/evidence_store_{args.db}.duckdb")
 CER_DIR = Path("data/extractions")
 
 # --- Connect / reset ---

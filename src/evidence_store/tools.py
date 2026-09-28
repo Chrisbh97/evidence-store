@@ -4,7 +4,7 @@ from typing import Optional
 
 import duckdb
 
-DB_PATH = Path("data/evidence_store_v3.duckdb")
+DB_PATH = Path("data/evidence_store_v4.duckdb")
 
 
 def _db():
