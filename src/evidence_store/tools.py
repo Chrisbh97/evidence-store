@@ -103,6 +103,11 @@ SCHEMA = {
                     "enum": ["value_asc", "value_desc"],
                     "description": "Sort results by computed value ascending or descending."
                 },
+                "result_type": {
+                    "type": "string",
+                    "enum": ["treatment_combination", "marginal_value"],
+                    "description": "Filter by result type. 'treatment_combination' = all factors specified (cell means). 'marginal_value' = averaged over some factors (main effects)."
+                },
                 "limit": {
                     "type": "integer",
                     "description": "Maximum results to return (default 100)."
@@ -352,6 +357,7 @@ def get_measurements(
     varying_factor: Optional[str] = None,
     factor_filters: Optional[dict] = None,
     sort_by: Optional[str] = None,
+    result_type: Optional[str] = None,
     limit: int = 100
 ):
     """Measurement retrieval grouped by varying_factor. Returns all matching rows with full factor context."""
@@ -399,6 +405,10 @@ def get_measurements(
     if metric:
         conditions.append("LOWER(m.metric) LIKE LOWER(?)")
         params.append(f"%{metric}%")
+
+    if result_type:
+        conditions.append("o.result_type = ?")
+        params.append(result_type)
 
     for k, v in factor_filters.items():
         if k in experiment_factor_names:
@@ -667,6 +677,7 @@ def get_source_observations(source_id: str, experiment_id: str):
 
     obs_rows = con.execute("""
         SELECT o.observation_id, o.factor_values_json, o.provenance,
+               o.marginal_over_json, o.result_type,
                m.metric, m.value_raw, m.computed_value, m.significance_letter, m.statistic, m.unit
         FROM observations o
         LEFT JOIN measurements m ON o.observation_id = m.observation_id
@@ -683,13 +694,15 @@ def get_source_observations(source_id: str, experiment_id: str):
             obs_map[oid] = {
                 "observation_id": oid,
                 "factor_values": json.loads(r[1]) if isinstance(r[1], str) else r[1],
+                "marginal_over": json.loads(r[3]) if isinstance(r[3], str) else (r[3] or []),
+                "result_type": r[4] or "treatment_combination",
                 "provenance": r[2],
                 "measurements": []
             }
-        if r[3]:  # metric is not null
+        if r[5]:  # metric is not null
             obs_map[oid]["measurements"].append({
-                "metric": r[3], "value_raw": r[4], "computed_value": r[5],
-                "significance_letter": r[6], "statistic": r[7], "unit": r[8]
+                "metric": r[5], "value_raw": r[6], "computed_value": r[7],
+                "significance_letter": r[8], "statistic": r[9], "unit": r[10]
             })
 
     return {
