@@ -81,7 +81,7 @@ for i in range(1, 11):
         sys.exit(0)
     elapsed = time.time() - t0
 
-    if proc.returncode != 0:
+    if current_proc.returncode != 0:
         print(f"  FAILED (exit {proc.returncode}) after {format_time(elapsed)}", file=sys.stderr)
         failed += 1
         failed_papers.append(f"s{i}")
