@@ -56,18 +56,19 @@ for i in range(1, 11):
     print(f"{'='*60}", file=sys.stderr)
 
     t0 = time.time()
-    proc = subprocess.run(
+    proc = subprocess.Popen(
         [sys.executable, "-m", "src.ai_extraction", str(pdf),
          "--output", str(out), "--mode", "staged", "--pdf-engine", "pymupdf4llm",
          "--paper-id", f"s{i}"],
-        capture_output=True, text=True
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True
     )
+    for line in proc.stdout:
+        print(f"    {line.rstrip()}", file=sys.stderr)
+    proc.wait()
     elapsed = time.time() - t0
 
     if proc.returncode != 0:
         print(f"  FAILED (exit {proc.returncode}) after {format_time(elapsed)}", file=sys.stderr)
-        stderr_tail = proc.stderr[-500:] if proc.stderr else "(no stderr)"
-        print(stderr_tail, file=sys.stderr)
         failed += 1
         failed_papers.append(f"s{i}")
         completed += 1
