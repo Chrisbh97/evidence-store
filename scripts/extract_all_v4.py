@@ -4,7 +4,7 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--delay", type=float, default=20.0, help="Seconds between LLM calls")
-parser.add_argument("--model-tag", default="gemini", help="Model tag for output directory (e.g., gemini, openrouter)")
+parser.add_argument("--model-tag", default="gemini-3.5-flash-lite", help="Model tag for output directory (e.g., gemini-3.5-flash-lite, openrouter)")
 args = parser.parse_args()
 
 EXTRACTOR = Path("src/ai_extraction.py")
