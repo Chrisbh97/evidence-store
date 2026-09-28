@@ -4,6 +4,7 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--delay", type=float, default=20.0, help="Seconds between LLM calls")
+parser.add_argument("--model-tag", default="gemini", help="Model tag for output directory (e.g., gemini, openrouter)")
 args = parser.parse_args()
 
 EXTRACTOR = Path("src/ai_extraction.py")
@@ -55,7 +56,7 @@ signal.signal(signal.SIGINT, signal_handler)
 
 for i in range(1, 11):
     pdf = PAPERS_DIR / f"s{i}.pdf"
-    out = OUT_DIR / f"s{i}_v4"
+    out = OUT_DIR / f"s{i}_v4_{args.model_tag}"
     if out.exists():
         print(f"\n{'='*60}", file=sys.stderr)
         print(f"[{i}/10] s{i}  |  {out.name}  [SKIP]", file=sys.stderr)
