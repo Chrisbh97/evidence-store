@@ -57,16 +57,22 @@ def call_llm(system_prompt: str, user_msg: str, **kwargs) -> str:
                 retry_after = None
                 status = getattr(e, "status_code", 0) or getattr(e, "http_status", 0)
             is_rate_limit = status == 429 or "rate limit" in err_str or "rate_limit" in err_str
+            is_server_error = status in (503, 504) or "service unavailable" in err_str or "gateway timeout" in err_str
             is_transient = status in (408, 429, 500, 502, 503, 504) or "timeout" in err_str
             if not (is_rate_limit or is_transient):
                 _last_retry_total = 0.0
                 raise
             if retry_after:
                 wait = float(retry_after)
+            elif is_server_error:
+                wait = min(5 * attempt + random.uniform(0, 2), 60)
             else:
                 wait = min(2 ** attempt + random.uniform(0, 1), 120)
             accumulated += wait
-            print(f"  Rate limited (attempt {attempt}) — retrying in {wait:.1f}s", file=sys.stderr)
+            if is_server_error:
+                print(f"  Server error {status} (attempt {attempt}) — retrying in {wait:.1f}s", file=sys.stderr)
+            else:
+                print(f"  Rate limited (attempt {attempt}) — retrying in {wait:.1f}s", file=sys.stderr)
             time.sleep(wait)
 
 
@@ -82,6 +88,12 @@ def run_extraction(paper_text: str, experiment: dict, source: dict, row_group: d
     row_groups (e.g. a table with separate single-factor breakdown blocks)
     requires multiple calls, each scoped to just that group's grain.
     """
+    factor_lines = []
+    for d in experiment.get('dimensions', []):
+        levels = ", ".join([f"{l['id']} = {l['label']}" for l in d.get('levels', [])])
+        factor_lines.append(f"- {d['name']}: {levels}")
+    factor_defs = "\n".join(factor_lines) if factor_lines else "(no dimensions)"
+    
     user_msg = (
         f"Full paper:\n\n{paper_text}\n\n"
         f"---\n\n"
@@ -91,7 +103,8 @@ def run_extraction(paper_text: str, experiment: dict, source: dict, row_group: d
         f"Factors that vary in this group: {row_group.get('varies', [])}\n"
         f"Factors marginalized over (not stated per-row, averaged over all levels): {row_group.get('marginal_over', [])}\n"
         f"Result type: {row_group.get('result_type', 'treatment_combination')}\n"
-        f"Row labels in this group: {row_group.get('row_labels', [])}\n"
+        f"Row labels in this group: {row_group.get('row_labels', [])}\n\n"
+        f"FACTOR DEFINITIONS (use these exact IDs):\n{factor_defs}\n"
     )
     return call_llm(extraction, user_msg, **kwargs)
 
