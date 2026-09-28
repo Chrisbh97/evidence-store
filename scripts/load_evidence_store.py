@@ -245,7 +245,7 @@ for i in range(1, 11):
 # --- Create views for convenience ---
 con.execute("CREATE VIEW v_observations AS SELECT o1.*, e1.paper_id, e1.design, e1.location, e1.season FROM observations o1 JOIN experiments e1 ON o1.experiment_id = e1.experiment_id;")
 con.execute("CREATE VIEW v_dimensions AS SELECT d1.*, e1.paper_id FROM dimensions d1 JOIN experiments e1 ON d1.experiment_id = e1.experiment_id;")
-con.execute("CREATE VIEW v_anova AS SELECT sr.result_id, sr.analysis_id, sr.response_variable, sr.unit, sr.source, sr.source_type, sr.statistic_type, sr.value, sr.p_value_raw, sr.significance, sr.params_json, sta.source_id, sta.analysis_type, sta.design, sta.experiment_id, e2.paper_id FROM statistical_results sr JOIN statistical_analyses sta ON sr.analysis_id = sta.analysis_id JOIN experiments e2 ON sta.experiment_id = e2.experiment_id;")
+con.execute("CREATE VIEW v_statistics AS SELECT sr.result_id, sr.analysis_id, sr.response_variable, sr.unit, sr.source, sr.source_type, sr.statistic_type, sr.value, sr.p_value_raw, sr.significance, sr.params_json, sta.source_id, sta.analysis_type, sta.design, sta.experiment_id, e2.paper_id FROM statistical_results sr JOIN statistical_analyses sta ON sr.analysis_id = sta.analysis_id JOIN experiments e2 ON sta.experiment_id = e2.experiment_id;")
 con.execute("""
     CREATE VIEW v_measurements AS
     SELECT m.measurement_id, m.observation_id, m.metric, m.construct,
