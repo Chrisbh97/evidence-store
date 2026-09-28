@@ -1,6 +1,10 @@
 """Run v4 staged extraction on all 10 fertilizer papers with verification."""
-import subprocess, sys, time, json, signal
+import subprocess, sys, time, json, signal, argparse
 from pathlib import Path
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--delay", type=float, default=20.0, help="Seconds between LLM calls")
+args = parser.parse_args()
 
 EXTRACTOR = Path("src/ai_extraction.py")
 PAPERS_DIR = Path("papers/Fertiliser")
@@ -68,7 +72,7 @@ for i in range(1, 11):
     current_proc = subprocess.Popen(
         [sys.executable, "-m", "src.ai_extraction", str(pdf),
          "--output", str(out), "--mode", "staged", "--pdf-engine", "pymupdf4llm",
-         "--paper-id", f"s{i}"],
+         "--paper-id", f"s{i}", "--delay", str(args.delay)],
         stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True
     )
     try:
