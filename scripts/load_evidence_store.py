@@ -67,6 +67,8 @@ CREATE TABLE observations (
     experiment_id VARCHAR,
     source_id VARCHAR,
     factor_values_json VARCHAR,
+    marginal_over_json VARCHAR,
+    result_type VARCHAR,
     provenance VARCHAR,
     confidence VARCHAR
 );
@@ -117,10 +119,12 @@ result_id = 0
 dimension_id = 0
 
 for i in range(1, 11):
-    path = CER_DIR / f"s{i}_v3"
-    if not path.exists():
+    candidates = sorted(CER_DIR.glob(f"s{i}_v*"))
+    candidates = [c for c in candidates if c.is_file() and not c.name.endswith('.checkpoint')]
+    if not candidates:
         print(f"SKIP s{i} — not found")
         continue
+    path = candidates[-1]
 
     with open(str(path)) as f:
         data = json.load(f)
@@ -148,16 +152,31 @@ for i in range(1, 11):
         for d in exp.get("dimensions", []):
             dimension_id += 1
             did = f"DIM-{dimension_id:04d}"
+            levels = []
+            for l in d.get("levels", []):
+                if isinstance(l, dict):
+                    levels.append({"id": l.get("id", ""), "label": l.get("label", ""), "description": l.get("description", "")})
+                else:
+                    levels.append({"id": str(l), "label": str(l), "description": ""})
             con.execute(
                 "INSERT INTO dimensions VALUES (?, ?, ?, ?, ?)",
-                [did, eid, d.get("name", ""), d.get("role", "unknown"), json.dumps(d.get("levels", []))]
+                [did, eid, d.get("name", ""), d.get("role", "unknown"), json.dumps(levels)]
             )
 
         for s in exp.get("evidence_sources", []):
+            row_groups = []
+            for rg in s.get("row_groups", []):
+                row_groups.append({
+                    "group_id": rg.get("group_id", ""),
+                    "varies": rg.get("varies", []),
+                    "marginal_over": rg.get("marginal_over", []),
+                    "result_type": rg.get("result_type", "treatment_combination"),
+                    "row_labels": rg.get("row_labels", []),
+                })
             con.execute(
                 "INSERT INTO evidence_sources VALUES (?, ?, ?, ?, ?, ?)",
                 [s.get("source_id", ""), eid, s.get("type", ""), s.get("purpose", ""),
-                 s.get("page_number"), json.dumps(s.get("observation_grain", []))]
+                 s.get("page_number"), json.dumps(row_groups)]
             )
 
         for sa in exp.get("statistical_analyses", []):
@@ -199,9 +218,12 @@ for i in range(1, 11):
         obs_id += 1
         oid = f"O-{obs_id:04d}"
         con.execute(
-            "INSERT INTO observations VALUES (?, ?, ?, ?, ?, ?)",
+            "INSERT INTO observations VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
             [oid, f"{pid}_{obs.get('experiment_id', '')}", obs.get("source_id", ""),
-             json.dumps(obs.get("factor_values", {})), obs.get("provenance"), obs.get("confidence")]
+             json.dumps(obs.get("factor_values", {})),
+             json.dumps(obs.get("marginal_over", [])),
+             obs.get("result_type", "treatment_combination"),
+             obs.get("provenance"), obs.get("confidence")]
         )
         for m in obs.get("measurements", []):
             measurement_id += 1
@@ -216,7 +238,15 @@ for i in range(1, 11):
 con.execute("CREATE VIEW v_observations AS SELECT o1.*, e1.paper_id, e1.design, e1.location, e1.season FROM observations o1 JOIN experiments e1 ON o1.experiment_id = e1.experiment_id;")
 con.execute("CREATE VIEW v_dimensions AS SELECT d1.*, e1.paper_id FROM dimensions d1 JOIN experiments e1 ON d1.experiment_id = e1.experiment_id;")
 con.execute("CREATE VIEW v_anova AS SELECT sr.result_id, sr.analysis_id, sr.response_variable, sr.unit, sr.source, sr.source_type, sr.statistic_type, sr.value, sr.p_value_raw, sr.significance, sr.params_json, sta.source_id, sta.analysis_type, sta.design, sta.experiment_id, e2.paper_id FROM statistical_results sr JOIN statistical_analyses sta ON sr.analysis_id = sta.analysis_id JOIN experiments e2 ON sta.experiment_id = e2.experiment_id;")
-con.execute("CREATE VIEW v_measurements AS SELECT m.measurement_id, m.observation_id, m.metric, m.construct, m.value_raw, m.computed_value, m.significance_letter, m.statistic, m.unit, m.direction, o2.experiment_id, o2.source_id, o2.factor_values_json, o2.provenance FROM measurements m JOIN observations o2 ON m.observation_id = o2.observation_id;")
+con.execute("""
+    CREATE VIEW v_measurements AS
+    SELECT m.measurement_id, m.observation_id, m.metric, m.construct,
+           m.value_raw, m.computed_value, m.significance_letter, m.statistic, m.unit,
+           o2.experiment_id, o2.source_id, o2.factor_values_json, o2.provenance,
+           o2.marginal_over_json, o2.result_type
+    FROM measurements m
+    JOIN observations o2 ON m.observation_id = o2.observation_id;
+""")
 
 # --- Summary ---
 print(f"Loaded {paper_id} papers")
