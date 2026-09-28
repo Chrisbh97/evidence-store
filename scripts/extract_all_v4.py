@@ -1,5 +1,5 @@
 """Run v4 staged extraction on all 10 fertilizer papers with verification."""
-import subprocess, sys, time, json, re
+import subprocess, sys, time, json, signal
 from pathlib import Path
 
 EXTRACTOR = Path("src/ai_extraction.py")
@@ -39,6 +39,15 @@ completed = 0
 passed = 0
 failed = 0
 failed_papers = []
+current_proc = None
+
+def signal_handler(sig, frame):
+    print("\n\nInterrupted. Terminating...", file=sys.stderr)
+    if current_proc:
+        current_proc.terminate()
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
 
 for i in range(1, 11):
     pdf = PAPERS_DIR / f"s{i}.pdf"
@@ -56,15 +65,20 @@ for i in range(1, 11):
     print(f"{'='*60}", file=sys.stderr)
 
     t0 = time.time()
-    proc = subprocess.Popen(
+    current_proc = subprocess.Popen(
         [sys.executable, "-m", "src.ai_extraction", str(pdf),
          "--output", str(out), "--mode", "staged", "--pdf-engine", "pymupdf4llm",
          "--paper-id", f"s{i}"],
         stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True
     )
-    for line in proc.stdout:
-        print(f"    {line.rstrip()}", file=sys.stderr)
-    proc.wait()
+    try:
+        for line in current_proc.stdout:
+            print(f"    {line.rstrip()}", file=sys.stderr)
+        current_proc.wait()
+    except KeyboardInterrupt:
+        current_proc.terminate()
+        print("\n\nInterrupted. Exiting...", file=sys.stderr)
+        sys.exit(0)
     elapsed = time.time() - t0
 
     if proc.returncode != 0:
